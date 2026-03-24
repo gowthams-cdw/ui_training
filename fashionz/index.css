@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: #2a2b30;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  margin: 5.5rem 11.5rem;
+}
+
+header {
+  margin: 2.6rem 0;
+}
+
+.header__logo {
+  float: left;
+  height: 5rem;
+}
+
+.header__profile-icon {
+  background-color: #d8d8d8;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  float: right;
+  position: relative;
+}
+
+.header__profile-items-container {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  background-color: #eeeeee;
+  color: #111111;
+  min-width: 21rem;
+  padding: 1.2rem;
+  z-index: 10;
+}
+
+.header__profile-items-container button {
+  display: block;
+  width: 100%;
+  text-align: start;
+  padding: 0.6rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: none;
+}
+
+header::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.card {
+  display: inline-block;
+  width: 23%;
+  margin: 2.1rem 1.5% 2.1rem 0;
+}
+
+.card__img-container {
+  background-color: #24252a;
+  height: 33rem;
+  position: relative;
+}
+
+.card__img-container img {
+  height: 20rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card__star {
+  position: absolute;
+  font-size: 2.7rem;
+  color: #94b589;
+  top: 4%;
+  right: 4%;
+}
+
+.card__size {
+  position: absolute;
+  display: inline-block;
+  height: 5rem;
+  width: 5rem;
+  background-color: #90b085;
+  border-radius: 50%;
+  font-size: 2.4rem;
+  text-align: center;
+  line-height: 5rem;
+  bottom: -5%;
+  right: 5%;
+}
+
+.card__content {
+  margin-top: 1rem;
+}
+
+.card__content h3 {
+  color: #cccccd;
+}
+
+.card__content span {
+  color: #838485;
+  display: block;
+}
+
+.card__content button {
+  margin-top: 0.5rem;
+  background-color: transparent;
+  color: #aaaaaa;
+  padding: 0.8rem 2rem;
+  border: 1px solid #78787a;
+}
+
+footer {
+  background-color: #000000;
+  color: #efefef;
+  padding: 3.6rem;
+  text-align: center;
+}
+
+footer span {
+  margin-inline: 2.5rem;
+  font-size: 2rem;
+}
+
+/* responsiveness */
+/* TABLET */
+@media (max-width: 1024px) {
+  .container {
+    margin: 3rem 3rem;
+  }
+
+  .card {
+    display: inline-block;
+    width: 47%;
+    margin: 2.1rem 1.5% 2.1rem 0;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .container {
+    margin: 2rem 2rem;
+  }
+
+  .card {
+    display: inline-block;
+    width: 100%;
+    margin: 2.1rem 1.5% 2.1rem 0;
+  }
+}
