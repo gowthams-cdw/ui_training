@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  background-color: #2d5e90;
+  padding: 2.5rem;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+main {
+  margin: 1.3rem 11.5rem;
+}
+
+main::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.left {
+  float: left;
+  width: 62%;
+}
+
+.right {
+  float: right;
+  width: 36.5%;
+}
+
+.card {
+  border: black solid 0.1rem;
+  margin-top: 1.8rem;
+}
+
+.card__heading {
+  background-color: #2d5e90;
+  padding: 1rem 2.7rem;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.card__content {
+  display: inline-block;
+  background-color: #f6f6f6;
+  padding: 1.4rem 2.5rem;
+  color: #111111;
+  text-align: justify;
+  font-size: 1.28rem;
+  line-height: 1.8rem;
+}
