@@ -68,3 +68,38 @@ main::after {
   font-size: 1.28rem;
   line-height: 1.8rem;
 }
+
+/* responsiveness */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  main {
+    margin: 1.3rem 3rem;
+  }
+
+  .left {
+    width: 55%;
+    margin-right: 2%;
+  }
+
+  .right {
+    width: 43%;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  main {
+    margin: 1.5rem;
+  }
+
+  .left,
+  .right {
+    float: none;
+    width: 100%;
+  }
+
+  .right {
+    margin-top: 1rem;
+  }
+}
