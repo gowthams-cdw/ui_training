@@ -5,9 +5,9 @@ const calculator = {
 	division: (a, b) => {
 		if (b === 0) {
 			if (a === 0) {
-				return "Indeterminate form: 0 divided by 0";
+				return "Indeterminate form: 0 divided by 0"; // undefined
 			}
-			return "Zero divided by zero is undefined";
+			return "Infinity: division by zero";
 		}
 
 		return b / a;
