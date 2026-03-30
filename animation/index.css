@@ -29,34 +29,40 @@ body {
 	gap: 1rem;
 	background-color: #0e1327;
 	padding: 3rem;
-	transition: all 500ms;
+	transition: transform 2s;
 	border-radius: 0.625rem;
 	z-index: 1;
 	position: relative;
-	animation: pulseGlow 3s infinite ease-in-out;
+
+	animation:
+		pulseGlowHover 3s infinite ease-in-out 2s forwards,
+		scaleUpHover 2s forwards;
+	animation-play-state: paused;
 }
 
 .card:hover {
-	transform: scale(1.1);
+	animation-play-state: running;
 }
 
-@keyframes pulseGlow {
-	0% {
+/* scale hover animation */
+@keyframes scaleUpHover {
+	to {
+		transform: scale(1.5);
+	}
+}
+
+/* pulse hover animation */
+@keyframes pulseGlowHover {
+	from {
 		box-shadow:
 			0 0 0.3125rem #00ffa033,
 			0 0 0.625rem #00ffa01a;
 	}
 
-	50% {
+	to {
 		box-shadow:
 			0 0 1.25rem #00ffa080,
 			0 0 2.5rem #00ffa04d;
-	}
-
-	100% {
-		box-shadow:
-			0 0 0.3125rem #00ffa033,
-			0 0 0.625rem #00ffa01a;
 	}
 }
 
@@ -124,8 +130,7 @@ body {
 	font-size: 0.8rem;
 	writing-mode: vertical-rl;
 
-	animation: rain 5s linear infinite;
-	animation-fill-mode: backwards;
+	animation: rain 5s linear infinite backwards;
 	opacity: 0.8;
 }
 
