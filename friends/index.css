@@ -1,0 +1,102 @@
+/* universal reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* hearder */
+.header-container {
+	background-color: #371e63;
+	color: #cdc7d8;
+	font-family: "Google Sans Flex", sans-serif;
+	font-size: 1.2rem;
+	padding: 1.6rem;
+	font-weight: 300;
+}
+
+/* main */
+.main-container {
+	margin: 3.15rem 4.45rem;
+}
+
+/* cards container */
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.75rem;
+}
+
+/* individual card */
+.card {
+	background-color: #5265af;
+	display: flex;
+	gap: 1rem;
+	justify-content: start;
+	align-items: center;
+	cursor: pointer;
+
+	padding: 0.75rem 0.65rem 0.85rem 0.8rem;
+
+	/* card img container */
+	.card__img-container {
+		width: 3.4rem;
+		height: 3.4rem;
+
+		/* card img */
+		.card__img {
+			height: 100%;
+			width: 100%;
+			border-radius: 100%;
+			object-fit: cover;
+		}
+	}
+
+	/* card content */
+	.card__content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+
+		/* card content name */
+		.card__content-name {
+			color: #ffffff;
+			font-size: 0.9rem;
+			font-family: "Roboto", sans-serif;
+		}
+
+		/* card content email */
+		.card__content-email {
+			text-decoration: none;
+			color: #cdd3e8;
+			font-size: 0.7rem;
+			font-family: "Roboto", sans-serif;
+		}
+	}
+}
+
+/* ================= */
+/* RESPONSIVE DESIGN */
+/* ================= */
+
+/* tablet design */
+@media (max-width: 1024px) {
+	.main-container {
+		margin: 2rem 3.41rem;
+	}
+
+	.cards-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* mobile design */
+@media (max-width: 768px) {
+	.main-container {
+		margin: 1rem 2.41rem;
+	}
+
+	.cards-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
