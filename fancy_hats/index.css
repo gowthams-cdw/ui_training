@@ -1,0 +1,156 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.imgContainer {
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+
+	&::after {
+		content: "";
+		inset: 0;
+		position: fixed;
+		background-color: rgba(0, 0, 0, 0.25);
+	}
+
+	.imgContainer__background-img {
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+.header,
+.main,
+.footer {
+	color: white;
+	position: absolute;
+	z-index: 1;
+}
+
+.header {
+	width: 100%;
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+	margin-top: 2.1rem;
+
+	.header__menu-trigger {
+		padding: 1.25rem 1.45rem;
+		background-color: #000000;
+		font-size: 1.6rem;
+		cursor: pointer;
+	}
+
+	.header__menu-items-container {
+		background-color: #000000;
+		position: absolute;
+		left: 0;
+		border-radius: 0 1.2rem 1.2rem 0;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		padding: 1.55rem 3.3rem;
+		cursor: auto;
+
+		.header__menu-item-img {
+			height: 4.8rem;
+			width: 4.8rem;
+			cursor: pointer;
+		}
+
+		.header__menu-item {
+			list-style-type: none;
+			font-family: "Roboto Condensed", sans-serif;
+			color: #eaeaea;
+			font-size: 1rem;
+			font-weight: 350;
+			cursor: pointer;
+		}
+
+		transform: translateX(-100%);
+
+		transition: transform 500ms ease-in-out;
+	}
+
+	.header__menu-trigger:hover + .header__menu-items-container,
+	.header__menu-items-container:hover {
+		transform: translateX(0);
+		transition: transform 500ms ease-in-out;
+
+		.header__menu-item:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	.header__heading {
+		font-family: "Roboto Condensed", sans-serif;
+		font-size: 4rem;
+		letter-spacing: 0.15rem;
+		position: relative;
+		left: 7.15rem;
+	}
+
+	.header__launch-year-since {
+		font-family: "Roboto Condensed", sans-serif;
+		position: relative;
+		top: 6.6rem;
+		left: 5.05rem;
+		transform: rotate(-90deg);
+		font-size: 2.2rem;
+		letter-spacing: 0.1rem;
+
+		.header__launch-year {
+			font-size: 5.42rem;
+			font-family: "Roboto", sans-serif;
+			letter-spacing: -0.03rem;
+		}
+	}
+}
+
+.main {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 37.75rem;
+	padding-left: 0.5rem;
+	line-height: 0.93;
+
+	.main__quote {
+		position: absolute;
+		font-weight: 700;
+		font-size: 5.6rem;
+		font-family: "Roboto Condensed", sans-serif;
+		word-spacing: 0.3rem;
+		letter-spacing: 0.23rem;
+
+		.main__quote-highlight {
+			font-size: 7.6rem;
+			letter-spacing: 0.26rem;
+		}
+	}
+}
+
+.footer {
+	position: absolute;
+	bottom: 1rem;
+	right: 1.1rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.9rem;
+
+	.footer__icons {
+		text-decoration: none;
+		color: #ffffff;
+		font-size: 1.7rem;
+		cursor: pointer;
+	}
+}
