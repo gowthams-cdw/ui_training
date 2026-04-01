@@ -1,0 +1,190 @@
+<!-- doctype -->
+<!doctype html>
+
+<!-- html -->
+<html lang="en">
+  <!-- head -->
+  <head>
+    <!-- meta attribues -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- title -->
+    <title>Form Validation</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- css -->
+    <link href="index.css" rel="stylesheet" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <!-- body -->
+  <body>
+    <!-- container to store header and footer -->
+    <div class="container">
+      <!-- header -->
+      <header class="header">
+        <figure class="header__img-figure">
+          <img
+            src="assets/sirius_logo.svg"
+            alt="sirius logo"
+            class="header__img"
+          />
+        </figure>
+      </header>
+
+      <!-- main -->
+      <main class="main">
+        <!-- form -->
+        <form class="form">
+          <!-- billing details -->
+          <h2 class="form__heading form__heading-billing-details">
+            BILLING DETAILS
+          </h2>
+
+          <!-- name fields -->
+          <div class="form__name-fields">
+            <!-- first name -->
+            <div class="form__input-container">
+              <label for="first-name" class="form__label">First Name</label>
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                class="form__input"
+                autocomplete="on"
+              />
+
+              <span class="form__errors form__first-name-error"></span>
+            </div>
+
+            <!-- last name -->
+            <div class="form__input-container">
+              <label for="last-name" class="form__label">Last Name</label>
+              <input
+                type="text"
+                name="last-name"
+                id="last-name"
+                class="form__input"
+                autocomplete="on"
+              />
+
+              <span class="form__errors form__last-name-error"></span>
+            </div>
+          </div>
+
+          <!-- email -->
+          <div class="form__input-container">
+            <label for="email" class="form__label">Email Address</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              class="form__input"
+              autocomplete="on"
+            />
+
+            <span class="form__errors form__email-error"></span>
+          </div>
+
+          <!-- contact number -->
+          <div class="form__input-container">
+            <label for="contact-number" class="form__label"
+              >Contact Number</label
+            >
+            <input
+              type="text"
+              name="contact-number"
+              id="contact-number"
+              class="form__input"
+              autocomplete="on"
+            />
+
+            <span class="form__errors form__contact-number-error"></span>
+          </div>
+
+          <!-- pin code -->
+          <div class="form__input-container">
+            <label for="pincode" class="form__label">Pin Code</label>
+            <input
+              type="text"
+              name="pincode"
+              id="pincode"
+              class="form__input"
+              autocomplete="on"
+            />
+
+            <span class="form__errors form__pincode-error"></span>
+          </div>
+
+          <!-- payment mode -->
+          <h2 class="form__heading form__heading-payment-details">
+            PAYMENT DETAILS
+          </h2>
+
+          <div class="form__input-container">
+            <label for="card-number" class="form__label">Card Number</label>
+            <input
+              type="text"
+              name="card-number"
+              id="card-number"
+              class="form__input"
+              autocomplete="on"
+            />
+
+            <span class="form__errors form__card-number-error"></span>
+          </div>
+
+          <!-- expiry and cvv fields  -->
+          <div class="form__card-fields">
+            <!-- expiry year -->
+
+            <div class="form__input-container">
+              <label for="expiry-year" class="form__label"
+                >Card Expiry (Year)</label
+              >
+              <input
+                type="text"
+                name="expiry-year"
+                id="expiry-year"
+                class="form__input"
+                autocomplete="on"
+              />
+
+              <span class="form__errors form__card-expiry-error"></span>
+            </div>
+
+            <!-- cvv -->
+            <div class="form__input-container">
+              <label for="cvv" class="form__label">CVV</label>
+              <input
+                type="text"
+                name="cvv"
+                id="cvv"
+                class="form__input"
+                autocomplete="on"
+              />
+
+              <span class="form__errors form__card-cvv-error"></span>
+            </div>
+          </div>
+
+          <!-- complete payment -->
+          <button type="submit" class="form__submit">COMPLETE PAYMENT</button>
+        </form>
+      </main>
+    </div>
+  </body>
+
+  <!-- scripts -->
+  <script src="index.js" defer></script>
+</html>
