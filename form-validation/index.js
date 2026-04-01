@@ -1,46 +1,77 @@
-// inputs
-const inputElements = {
-	firstName: document.getElementById("first-name"),
-	lastName: document.getElementById("last-name"),
-	email: document.getElementById("email"),
-	contact: document.getElementById("contact-number"),
-	pincode: document.getElementById("pincode"),
-	cardNumber: document.getElementById("card-number"),
-	expiryYear: document.getElementById("expiry-year"),
-	cvv: document.getElementById("cvv"),
-};
-
-// error elements
-const errorMessageElements = {
-	firstName: document.querySelector(".form__first-name-error"),
-	lastName: document.querySelector(".form__last-name-error"),
-	email: document.querySelector(".form__email-error"),
-	contact: document.querySelector(".form__contact-number-error"),
-	pincode: document.querySelector(".form__pincode-error"),
-	cardNumber: document.querySelector(".form__card-number-error"),
-	expiry: document.querySelector(".form__card-expiry-error"),
-	cvv: document.querySelector(".form__card-cvv-error"),
-};
-
-// regex patterns
-const regexPatterns = {
-	firstName: /^[a-zA-Z]{1,30}$/,
-	lastName: /^[a-zA-Z]{1,30}$/,
-	email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-	contactNumber: /^\d{10}$/,
-	pincode: /^\d{6}$/,
-	cardNumber: /^\d{16}$/,
-	expiry: /^\d{4}$/,
-	cvv: /^\d{3,4}$/,
-};
+const config = [
+	{
+		inputField: document.getElementById("first-name"),
+		errorField: document.querySelector(".form__first-name-error"),
+		pattern: /^[a-zA-Z]{1,30}$/,
+		emptyMsg: "First Name is required",
+		invalidMsg: "First Name is not valid",
+	},
+	{
+		inputField: document.getElementById("last-name"),
+		errorField: document.querySelector(".form__last-name-error"),
+		pattern: /^[a-zA-Z]{1,30}$/,
+		emptyMsg: "Last Name is required",
+		invalidMsg: "Last Name is not valid",
+	},
+	{
+		inputField: document.getElementById("email"),
+		errorField: document.querySelector(".form__email-error"),
+		pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+		emptyMsg: "Email is required",
+		invalidMsg: "Email is not valid",
+	},
+	{
+		inputField: document.getElementById("contact-number"),
+		errorField: document.querySelector(".form__contact-number-error"),
+		pattern: /^\d{10}$/,
+		emptyMsg: "Contact Number is required",
+		invalidMsg: "Contact Number is not valid",
+	},
+	{
+		inputField: document.getElementById("pincode"),
+		errorField: document.querySelector(".form__pincode-error"),
+		pattern: /^\d{6}$/,
+		emptyMsg: "Pincode is required",
+		invalidMsg: "Pincode is not valid",
+	},
+	{
+		inputField: document.getElementById("card-number"),
+		errorField: document.querySelector(".form__card-number-error"),
+		pattern: /^\d{16}$/,
+		emptyMsg: "Card Number is required",
+		invalidMsg: "Card Number is not valid",
+	},
+	{
+		inputField: document.getElementById("expiry-year"),
+		errorField: document.querySelector(".form__card-expiry-error"),
+		pattern: /^\d{4}$/,
+		emptyMsg: "Expiry Year is required",
+		invalidMsg: "Expiry Year is not valid",
+		extraValidations: [
+			// year should be current year or future year
+			(value) => {
+				const currentYear = new Date().getFullYear();
+				return parseInt(value) >= currentYear;
+			},
+		],
+	},
+	{
+		inputField: document.getElementById("cvv"),
+		errorField: document.querySelector(".form__card-cvv-error"),
+		pattern: /^\d{3,4}$/,
+		emptyMsg: "CVV is required",
+		invalidMsg: "CVV is not valid",
+	},
+];
 
 // generic helper function to validate fields
 const validateField = (
 	inputElement,
+	errorMessageElement,
 	regexPattern,
 	emptyMsg,
 	invalidMsg,
-	errorMessageElement,
+	extraValidations = [],
 ) => {
 	const value = inputElement.value.trim();
 
@@ -56,32 +87,8 @@ const validateField = (
 		return false;
 	}
 
-	errorMessageElement.textContent = "";
-	inputElement.classList.remove("form__input-error");
-	return true;
-};
-
-// expiry extra check
-const validateExpiry = (inputElement, errorMessageElement) => {
-	const value = inputElement.value.trim();
-
-	if (!value) {
-		errorMessageElement.textContent = "Card Expiry is required";
-		inputElement.classList.add("form__input-error");
-		return false;
-	}
-
-	if (!regexPatterns.expiry.test(value)) {
-		errorMessageElement.textContent = "Card Expiry is not valid";
-		inputElement.classList.add("form__input-error");
-		return false;
-	}
-
-	const currentYear = new Date().getFullYear();
-
-	if (parseInt(value) < currentYear) {
-		errorMessageElement.textContent = "Card Expiry is not valid";
-		inputElement.classList.add("form__input-error");
+	const isValid = extraValidations.every((validationFn) => validationFn(value));
+	if (!isValid) {
 		return false;
 	}
 
@@ -90,84 +97,71 @@ const validateExpiry = (inputElement, errorMessageElement) => {
 	return true;
 };
 
-// form
-const form = document.querySelector(".form");
+// looping
+config.forEach(
+	({
+		inputField,
+		errorField,
+		pattern,
+		emptyMsg,
+		invalidMsg,
+		extraValidations,
+	}) => {
+		inputField.addEventListener("input", () =>
+			validateField(
+				inputField,
+				errorField,
+				pattern,
+				emptyMsg,
+				invalidMsg,
+				extraValidations,
+			),
+		);
+
+		inputField.addEventListener("blur", () =>
+			validateField(
+				inputField,
+				errorField,
+				pattern,
+				emptyMsg,
+				invalidMsg,
+				extraValidations,
+			),
+		);
+	},
+);
 
 // form submit action
+const form = document.querySelector(".form");
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	const isFirstNameValid = validateField(
-		inputElements.firstName,
-		regexPatterns.firstName,
-		"First Name is required",
-		"First Name is not valid",
-		errorMessageElements.firstName,
+	let isFormValid = true;
+	config.forEach(
+		({
+			inputField,
+			errorField,
+			pattern,
+			emptyMsg,
+			invalidMsg,
+			extraValidations,
+		}) => {
+			const isFieldValid = validateField(
+				inputField,
+				errorField,
+				pattern,
+				emptyMsg,
+				invalidMsg,
+				extraValidations,
+			);
+
+			if (!isFieldValid) {
+				isFormValid = false;
+			}
+		},
 	);
 
-	const isLastNameValid = validateField(
-		inputElements.lastName,
-		regexPatterns.firstName,
-		"Last Name is required",
-		"Last Name is not valid",
-		errorMessageElements.lastName,
-	);
-
-	const isEmailValid = validateField(
-		inputElements.email,
-		regexPatterns.email,
-		"Email Address is required",
-		"Email Address is not valid",
-		errorMessageElements.email,
-	);
-
-	const isContactValid = validateField(
-		inputElements.contact,
-		regexPatterns.contactNumber,
-		"Contact Number is required",
-		"Contact Number is not valid",
-		errorMessageElements.contact,
-	);
-
-	const isPincodeValid = validateField(
-		inputElements.pincode,
-		regexPatterns.pincode,
-		"PIN Code is required",
-		"PIN Code is not valid",
-		errorMessageElements.pincode,
-	);
-
-	const isCardValid = validateField(
-		inputElements.cardNumber,
-		regexPatterns.cardNumber,
-		"Card Number is required",
-		"Card Number is not valid",
-		errorMessageElements.cardNumber,
-	);
-
-	const isExpiryValid = validateExpiry(
-		inputElements.expiryYear,
-		errorMessageElements.expiry,
-	);
-
-	const isCvvValid = validateField(
-		inputElements.cvv,
-		regexPatterns.cvv,
-		"CVV is required",
-		"CVV is not valid",
-		errorMessageElements.cvv,
-	);
-
-	if (
-		isFirstNameValid &&
-		isLastNameValid &&
-		isEmailValid &&
-		isContactValid &&
-		isPincodeValid &&
-		isCardValid &&
-		isExpiryValid &&
-		isCvvValid
-	) {
+	if (isFormValid) {
 		alert("Payment Successful ✅");
 		form.reset();
 	}
