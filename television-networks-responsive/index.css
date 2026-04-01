@@ -1,105 +1,143 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
+/* universal */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
+/* header */
+.header {
+	background-color: #175e8e;
+	padding: 1.35rem 0;
+
+	/* header title */
+	.header__title {
+		margin-left: 32.5rem;
+		font-size: 1rem;
+		font-family: "Open Sans", monospace;
+		color: #ffffff;
+		font-weight: 500;
+	}
 }
 
-body {
-  font-size: 1.6rem;
-  font-family: "Roboto", sans-serif;
+/* main */
+.main {
+	padding: 1.78rem 6.85rem;
+
+	/* left */
+	.left {
+		float: left;
+		width: 60.9%;
+		clear: left;
+	}
+
+	/* right */
+	.right {
+		float: right;
+		width: 37.6%;
+		clear: right;
+	}
+
+	/* right card */
+	.right.card {
+		margin-bottom: 1.2rem;
+
+		.card__content {
+			padding-block: 1rem;
+		}
+	}
+
+	/* left and right cards */
+	.left,
+	.right {
+		border: #47749f solid 0.09rem;
+		margin-bottom: 1rem;
+
+		/* card heading */
+		.card__heading {
+			background-color: #175e8e;
+			padding: 0.58rem 1.225rem;
+			font-size: 0.97rem;
+			color: #ffffff;
+			font-weight: 600;
+			font-family: "Open Sans", monospace;
+		}
+
+		/* card content */
+		.card__content {
+			display: inline-block;
+			background-color: #f6f6f6;
+			padding: 1.05rem 1.225rem;
+			color: #111111;
+			text-align: justify;
+			font-size: 0.788rem;
+			line-height: 1.238rem;
+			font-family: "Open Sans", monospace;
+			font-weight: 450;
+		}
+	}
+
+	/* sonynetwork card */
+	.sonynetwork-card {
+		line-height: 1.2rem;
+		margin-top: -5rem;
+	}
 }
 
-header {
-  background-color: #2d5e90;
-  padding: 2.5rem;
-}
-
-header h1 {
-  text-align: center;
-  font-size: 2rem;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-main {
-  margin: 1.3rem 11.5rem;
-}
-
-main::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.left {
-  float: left;
-  width: 62%;
-}
-
-.right {
-  float: right;
-  width: 36.5%;
-}
-
-.card {
-  border: black solid 0.1rem;
-  margin-top: 1.8rem;
-}
-
-.card__heading {
-  background-color: #2d5e90;
-  padding: 1rem 2.7rem;
-  font-size: 1.8rem;
-  color: #ffffff;
-}
-
-.card__content {
-  display: inline-block;
-  background-color: #f6f6f6;
-  padding: 1.4rem 2.5rem;
-  color: #111111;
-  text-align: justify;
-  font-size: 1.28rem;
-  line-height: 1.8rem;
-}
-
-/* responsiveness */
-
-/* TABLET */
+/* Tablet */
 @media (max-width: 1024px) {
-  main {
-    margin: 1.3rem 3rem;
-  }
+	.header {
+		padding: 1.365rem 0;
 
-  .left {
-    width: 55%;
-    margin-right: 2%;
-  }
+		.header__title {
+			margin: 0;
+			text-align: center;
+		}
+	}
 
-  .right {
-    width: 43%;
-  }
+	.main {
+		padding: 1.75rem 1.3rem;
+
+		.left {
+			float: left;
+			width: 60.99%;
+		}
+
+		.right {
+			float: right;
+			width: 37.6%;
+		}
+	}
 }
 
-/* mobile */
 @media (max-width: 768px) {
-  main {
-    margin: 1.5rem;
-  }
+	.header {
+		padding: 1.365rem 0;
 
-  .left,
-  .right {
-    float: none;
-    width: 100%;
-  }
+		.header__title {
+			margin: 0;
+			text-align: center;
+		}
+	}
 
-  .right {
-    margin-top: 1rem;
-  }
+	.main {
+		padding: 1.75rem 1rem;
+
+		.left {
+			float: left;
+			width: 100%;
+			clear: both;
+		}
+
+		.right {
+			float: right;
+			width: 100%;
+			clear: both;
+		}
+
+		.sonynetwork-card {
+			line-height: 1.2rem;
+			margin-top: auto;
+		}
+	}
 }
