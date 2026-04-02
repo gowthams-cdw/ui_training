@@ -1,4 +1,4 @@
-import { formValidationConfig } from "./config/form-validation.config.js";
+import { formValidationConfig } from "./config/formValidation.config.js";
 
 // generic helper function to validate fields
 const validateField = (fieldName) => {

@@ -47,6 +47,3 @@ export const formValidationConfig = {
 		invalidMsg: "CVV is not valid",
 	},
 };
-
-// inputField: document.getElementById("cvv"),
-// errorField: document.querySelector(".form__card-cvv-error"),
