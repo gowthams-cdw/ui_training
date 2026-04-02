@@ -35,19 +35,18 @@ body {
 				position: absolute;
 				top: 3.8rem;
 				right: 0;
-				background-color: #eeeeee;
-				color: #111111;
-				min-width: 12.3rem;
-				padding: 0.75rem 0.75rem 0.63rem 0.75rem;
 				z-index: 1;
 				opacity: 0;
+				background-color: #eeeeee;
+				color: #111111;
+				padding: 0.5rem 0;
 
 				.header__profile-items-container-button {
 					display: block;
-					width: 100%;
+					min-width: 12.3rem;
 					text-align: start;
 					text-wrap: nowrap;
-					padding: 0.4rem 0.65rem;
+					padding: 0.7rem 1rem;
 					font-weight: 700;
 					font-size: 0.7rem;
 					border: none;
@@ -129,18 +128,33 @@ body {
 
 			.card__star {
 				position: absolute;
-				font-size: 1.6rem;
+				font-size: 1rem;
 				color: #94b589;
 				top: 3.5%;
 				right: 4.5%;
 				cursor: pointer;
 
-				&:focus {
+				&:hover {
 					opacity: 0.5;
+				}
+
+				.card__star-filled {
+					display: none;
+				}
+
+				&:focus {
+					.card__star-filled {
+						display: block;
+					}
+
+					.card__star-empty {
+						display: none;
+					}
 				}
 			}
 
 			.card__size {
+				font-family: "Roboto", sans-serif;
 				position: absolute;
 				display: inline-block;
 				height: 2.6rem;
@@ -152,6 +166,7 @@ body {
 				line-height: 2.6rem;
 				bottom: -6%;
 				right: 6%;
+				font-weight: 600;
 			}
 		}
 
@@ -184,6 +199,11 @@ body {
 				border: 0.06rem solid #b3b3b3;
 				color: #b3b3b3;
 				cursor: pointer;
+
+				&:hover {
+					border: 0.06rem solid #ffffff;
+					color: #ffffff;
+				}
 			}
 		}
 	}
@@ -198,5 +218,10 @@ body {
 	.footer__contents {
 		margin-inline: 1.55rem;
 		font-size: 1.2rem;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.7;
+		}
 	}
 }
