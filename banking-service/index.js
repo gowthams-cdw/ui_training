@@ -19,6 +19,10 @@ const createBankAccount = (pin, initialBalance) => {
 
 	// deposit money
 	const depositMoney = (enteredCardNo, enteredPin, amount) => {
+		if (isNaN(amount)) {
+			throw new Error("Amount must be a number");
+		}
+
 		if (amount <= 0) {
 			throw new Error("Deposit amount must be greater than zero");
 		}
@@ -36,6 +40,10 @@ const createBankAccount = (pin, initialBalance) => {
 
 	// withdraw money
 	const withdrawMoney = (enteredCardNo, enteredPin, amount) => {
+		if (isNaN(amount)) {
+			throw new Error("Amount must be a number");
+		}
+
 		if (amount <= 0) {
 			throw new Error("Withdraw amount must be greater than zero");
 		}
@@ -56,7 +64,7 @@ const createBankAccount = (pin, initialBalance) => {
 	};
 
 	// get summary
-	const getSummery = (enteredPin) => {
+	const getSummary = (enteredPin) => {
 		if (enteredPin !== pin) {
 			throw new Error("Invalid pin");
 		}
@@ -74,7 +82,7 @@ const createBankAccount = (pin, initialBalance) => {
 		accountNo,
 		depositMoney,
 		withdrawMoney,
-		getSummery,
+		getSummary,
 	};
 };
 
@@ -163,7 +171,7 @@ Choose:
 				case "3":
 					try {
 						const enteredPin = getValidUserInput("Enter PIN:");
-						const res = acc.getSummery(enteredPin);
+						const res = acc.getSummary(enteredPin);
 
 						alert(res);
 					} catch (e) {
