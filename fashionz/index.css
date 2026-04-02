@@ -1,0 +1,227 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #2a2b30;
+	height: 100vh;
+	width: 100vw;
+}
+
+.container {
+	padding: 3.1rem 1.9rem 3.7rem 6.75rem;
+
+	.header {
+		.header__logo {
+			margin-top: 0.74rem;
+			float: left;
+			height: 3.16rem;
+			width: 9rem;
+		}
+
+		.header__profile-icon {
+			background-color: #d8d8d8;
+			border-radius: 50%;
+			height: 3.3rem;
+			width: 3.3rem;
+			float: right;
+			position: relative;
+			right: 3.7rem;
+			cursor: pointer;
+
+			.header__profile-items-container {
+				position: absolute;
+				top: 3.8rem;
+				right: 0;
+				z-index: 1;
+				opacity: 0;
+				background-color: #eeeeee;
+				color: #111111;
+				padding: 0.5rem 0;
+
+				.header__profile-items-container-button {
+					display: block;
+					min-width: 12.3rem;
+					text-align: start;
+					text-wrap: nowrap;
+					padding: 0.7rem 1rem;
+					font-weight: 700;
+					font-size: 0.7rem;
+					border: none;
+					cursor: pointer;
+				}
+			}
+
+			&:hover .header__profile-items-container {
+				opacity: 1;
+			}
+		}
+
+		&::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+	}
+
+	.card__row {
+		margin-top: 0.9rem;
+		margin-bottom: 1rem;
+	}
+
+	.card {
+		display: inline-block;
+		width: 15.39rem;
+		margin-top: 1.8rem;
+		margin-right: 2.3rem;
+
+		.card__img-container {
+			background-color: #24252a;
+			height: 19.6rem;
+			position: relative;
+
+			.card__img-jacket {
+				width: 18.75rem;
+				height: 26rem;
+				background: url("./assets/products/products-sprite.png") -26.875rem
+					-0.625rem;
+				position: absolute;
+				top: 51%;
+				left: 49%;
+				transform: translate(-50%, -50%) scaleY(0.455) scaleX(0.455);
+			}
+
+			.card__img-shirt {
+				width: 18.875rem;
+				height: 25rem;
+				background: url("./assets/products/products-sprite.png") -47.375rem
+					-0.625rem;
+				position: absolute;
+				top: 51%;
+				left: 49%;
+				transform: translate(-50%, -50%) scaleY(0.455) scaleX(0.455);
+			}
+
+			.card__img-sweatshirt {
+				width: 23.625rem;
+				height: 26.25rem;
+				background: url("./assets/products/products-sprite.png") -0.625rem
+					-27rem;
+				position: absolute;
+				top: 51%;
+				left: 49%;
+				transform: translate(-50%, -50%) scaleY(0.455) scaleX(0.455);
+			}
+
+			.card__img-tshirt {
+				width: 25.5rem;
+				height: 25.125rem;
+				background: url("./assets/products/products-sprite.png") -0.625rem
+					-0.625rem;
+				position: absolute;
+				top: 51%;
+				left: 49%;
+				transform: translate(-50%, -50%) scaleY(0.455) scaleX(0.455);
+			}
+
+			.card__star {
+				position: absolute;
+				font-size: 1rem;
+				color: #94b589;
+				top: 3.5%;
+				right: 4.5%;
+				cursor: pointer;
+
+				&:hover {
+					opacity: 0.5;
+				}
+
+				.card__star-filled {
+					display: none;
+				}
+
+				&:focus {
+					.card__star-filled {
+						display: block;
+					}
+
+					.card__star-empty {
+						display: none;
+					}
+				}
+			}
+
+			.card__size {
+				font-family: "Roboto", sans-serif;
+				position: absolute;
+				display: inline-block;
+				height: 2.6rem;
+				width: 2.6rem;
+				background-color: #90b085;
+				border-radius: 100%;
+				font-size: 1.2rem;
+				text-align: center;
+				line-height: 2.6rem;
+				bottom: -6%;
+				right: 6%;
+				font-weight: 600;
+			}
+		}
+
+		.card__content {
+			margin-top: 0.5rem;
+
+			h3 {
+				color: #cccccd;
+				font-family: "Roboto", sans-serif;
+				font-weight: 500;
+			}
+
+			span {
+				margin-top: 0.1rem;
+				color: #838485;
+				font-size: 1.1rem;
+				display: block;
+				font-weight: 500;
+				font-family: "Roboto", sans-serif;
+			}
+
+			button {
+				margin-top: 0.6rem;
+				background-color: transparent;
+				color: #aaaaaa;
+				padding: 0.5rem 0.9rem;
+				border: 0.0625rem solid #78787a;
+				font-size: 0.8rem;
+				font-family: "Roboto", sans-serif;
+				border: 0.06rem solid #b3b3b3;
+				color: #b3b3b3;
+				cursor: pointer;
+
+				&:hover {
+					border: 0.06rem solid #ffffff;
+					color: #ffffff;
+				}
+			}
+		}
+	}
+}
+
+.footer {
+	background-color: #000000;
+	color: #efefef;
+	padding: 2rem;
+	text-align: center;
+
+	.footer__contents {
+		margin-inline: 1.55rem;
+		font-size: 1.2rem;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+}
