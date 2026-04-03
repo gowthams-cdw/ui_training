@@ -1,0 +1,331 @@
+/* ========= */
+/* VARIABLES */
+/* ========= */
+/* ========= */
+/* FUNCTIONS */
+/* ========= */
+/* ====== */
+/* MIXINS */
+/* ====== */
+/* ============ */
+/* PLACEHOLDERS */
+/* ============ */
+.body .container .footer__social-link, .body .container .bigName__img-link, .body .container .hero .header__email-mobile, .body .container .header__email-desktop {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.body .container .hero .header__email-mobile, .body .container .header__email-desktop {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* universal selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body */
+.body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Roboto Condensed", sans-serif;
+  /* container */
+}
+.body .container {
+  width: 100%;
+  max-width: 65rem;
+  height: 100%;
+  margin: auto;
+  padding: 3.3rem 0;
+  /* header */
+}
+.body .container .header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  /* email for desktop screens */
+}
+.body .container .header__email-desktop {
+  margin: 1rem;
+  font-size: 1.6rem;
+  transition: opacity 0.2s ease;
+}
+.body .container .header__email-desktop:hover {
+  opacity: 0.7;
+}
+.body .container {
+  /* hero */
+}
+.body .container .hero {
+  height: 26.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding-bottom: 1.5rem;
+  /* hero heading */
+}
+.body .container .hero__heading {
+  font-size: 8rem;
+  font-weight: 300;
+  transform: scaleX(1.02) scaleY(1);
+  /* lastname */
+}
+.body .container .hero__heading span {
+  font-weight: 700;
+}
+.body .container .hero {
+  /* role */
+}
+.body .container .hero__subheading {
+  margin-top: 0.2rem;
+  font-size: 2.7rem;
+  color: #cdcdcd;
+  letter-spacing: 0.04rem;
+  /* role highlight */
+}
+.body .container .hero__subheading span {
+  color: #5a8cda;
+}
+.body .container .hero {
+  /* email for mobile screens */
+}
+.body .container .hero .header__email-mobile {
+  display: none;
+  margin: 1rem;
+  font-size: 1.35rem;
+  transition: opacity 0.2s ease;
+}
+.body .container .hero .header__email-mobile:hover {
+  opacity: 0.7;
+}
+.body .container {
+  /* showcase */
+}
+.body .container .showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  row-gap: 1.6rem;
+  column-gap: 1.6rem;
+  flex-wrap: wrap;
+  /* showcase image container */
+}
+.body .container .showcase__img-container {
+  height: 18.3rem;
+  width: 20.6rem;
+}
+.body .container .showcase {
+  /* showcase images */
+}
+.body .container .showcase__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.body .container {
+  /* bignames */
+}
+.body .container .bigNames {
+  padding-top: 7.15rem;
+  padding-bottom: 13.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4.4rem;
+  /* bigname heading */
+}
+.body .container .bigNames__heading {
+  font-size: 2.58rem;
+  color: #cecece;
+}
+.body .container .bigNames {
+  /* bigname image container */
+}
+.body .container .bigNames__img-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5.05rem;
+}
+.body .container {
+  /* bigname image link */
+}
+.body .container {
+  /* bigname images */
+  /* map the images with its size */
+}
+.body .container .bigNames__img-spotify {
+  width: 6.8125rem;
+  height: 2.1rem;
+}
+.body .container .bigNames__img-audi {
+  width: 6.1875rem;
+  height: 2.1rem;
+}
+.body .container .bigNames__img-adidas {
+  width: 4.125rem;
+  height: 4.3rem;
+}
+.body .container .bigNames__img-lufthansa {
+  width: 7.5625rem;
+  height: 1.5rem;
+}
+.body .container .bigNames__img-ikea {
+  width: 6.8125rem;
+  height: 2.1875rem;
+}
+.body .container .bigNames__img-mont-blanc {
+  width: 5.625rem;
+  height: 3.3125rem;
+}
+.body .container {
+  /* individual big name logo */
+}
+.body .container .bigNames__img {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.body .container .bigNames__img:hover {
+  opacity: 0.7;
+}
+.body .container {
+  /* footer divider */
+}
+.body .container .footer__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  /* footer lines */
+}
+.body .container .footer__divider::before, .body .container .footer__divider::after {
+  content: "";
+  flex: 1;
+  height: 0.1875rem;
+  background-color: #858585;
+}
+.body .container .footer__divider {
+  /* left line */
+}
+.body .container .footer__divider::before {
+  max-width: 1.8rem;
+}
+.body .container .footer__divider {
+  /* right line */
+}
+.body .container .footer__divider::after {
+  margin-left: 1.875rem;
+  max-width: 10.8rem;
+}
+.body .container {
+  /* footer */
+}
+.body .container .footer {
+  height: 17.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4.35rem;
+  /* footer social icons */
+}
+.body .container .footer__social-icons {
+  margin-top: 5.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+.body .container .footer {
+  /* social icons button */
+}
+.body .container .footer__social-icons-btn {
+  background-color: transparent;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 50%;
+  padding: 0.7rem;
+  border: 0.0625rem solid #f4f4f4;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.body .container .footer__social-icons-btn:hover {
+  opacity: 0.7;
+}
+.body .container .footer {
+  /* social link */
+}
+.body .container .footer__social-link {
+  /* social link font */
+}
+.body .container .footer__social-link i {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+.body .container .footer {
+  /* end quote */
+}
+.body .container .footer span {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+/* ================= */
+/* RESPONSIVE STYLES */
+/* ================= */
+/* tablet */
+@media (max-width: 1024px) {
+  .body .container .header__email-desktop {
+    display: none;
+  }
+  .body .container .hero__heading {
+    font-size: 6rem;
+  }
+  .body .container .hero__subheading {
+    font-size: 3.3rem;
+  }
+  .body .container .hero .header__email-mobile {
+    display: block;
+  }
+  .body .container .showcase__img-container {
+    width: 45%;
+  }
+  .body .container .bigNames__heading {
+    font-size: 2.5rem;
+  }
+}
+/* mobile */
+@media (max-width: 768px) {
+  .body .container .hero__heading {
+    font-size: 4.5rem;
+  }
+  .body .container .hero__subheading {
+    font-size: 2.5rem;
+  }
+  .body .container .showcase__img-container {
+    width: 90%;
+  }
+  .body .container .bigNames__heading {
+    font-size: 2.5rem;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
