@@ -1,0 +1,15 @@
+/* include builtin modules */
+@use "sass:map";
+
+/* include user defined partials */
+@use "variables" as *;
+
+/* retrieves a breakpoint value from the $breakpoints map. */
+@function breakpoint($name) {
+  @if map.has-key($breakpoints, $name) {
+    @return map.get($breakpoints, $name);
+  }
+
+  @warn "Unknown breakpoint: `#{$name}`.";
+  @return null;
+}

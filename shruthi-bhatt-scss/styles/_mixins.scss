@@ -1,0 +1,49 @@
+/* use bulitin modules */
+@use "variables" as *;
+@use "functions" as *;
+
+/* responsive media-query wrapper. */
+@mixin respond-to($bp) {
+  @media (max-width: breakpoint($bp)) {
+    @content;
+  }
+}
+
+/* flex */
+@mixin flex($align: center, $justify: center, $direction: row) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+/* hover opacity */
+@mixin hover-fade($opacity: 0.7) {
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: $opacity;
+  }
+}
+
+/* circular icon button. */
+@mixin circle-btn($size: 2.5rem, $padding: 0.7rem) {
+  @include flex(center, center);
+  height: $size;
+  width: $size;
+  background-color: transparent;
+  padding: $padding;
+  border-radius: 50%;
+  border: 0.0625rem solid $color-icon-border;
+  cursor: pointer;
+  @include hover-fade;
+}
+
+/* divider line */
+@mixin divider-line($max-width) {
+  content: "";
+  flex: 1;
+  height: 0.0625rem;
+  background-color: $color-border;
+  max-width: $max-width;
+}

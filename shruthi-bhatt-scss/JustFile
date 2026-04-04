@@ -1,0 +1,7 @@
+generate-css:
+  @echo "Generating CSS from SCSS files..."
+  @sass styles/index.scss styles/index.css
+
+generate-live-css:
+  @echo "Generating Live CSS from SCSS files..."
+  @sass --watch styles/index.scss styles/index.css

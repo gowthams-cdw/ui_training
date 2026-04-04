@@ -1,0 +1,33 @@
+/* Colors */
+$color-bg: #000000;
+$color-text: #ffffff;
+$color-text-muted: #cdcdcd;
+$color-text-muted-2: #cecece;
+$color-accent: #5a8cda;
+$color-accent-green: #c0e891;
+$color-border: #ffffff;
+$color-icon-border: #f4f4f4;
+
+/* Typography */
+$font-primary: "Roboto Condensed", sans-serif;
+$font-secondary: "Roboto", sans-serif;
+$font-serif: "Times New Roman", Times, serif;
+
+/* Layout */
+$container-width: 79.5%;
+
+/* Breakpoints */
+$breakpoints: (
+  "tablet": 1024px,
+  "mobile": 768px,
+);
+
+// Logo sizes via map + @each
+$logo-sizes: (
+  "spotify": (6.8125rem, 2.1rem),
+  "audi": (6.1875rem, 2.1rem),
+  "adidas": (4.125rem, 4.3rem),
+  "lufthansa": (7.5625rem, 1.5rem),
+  "ikea": (6.8125rem, 2.1875rem),
+  "mont-blanc": (5.625rem, 3.3125rem),
+);
