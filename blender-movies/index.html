@@ -1,0 +1,138 @@
+<!-- doctype -->
+<!doctype html>
+
+<!-- html -->
+<html lang="en">
+  <!-- head -->
+  <head>
+    <!-- meta data -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- title -->
+    <title>Blender Movies</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link href="index.css" rel="stylesheet" />
+  </head>
+
+  <!-- body -->
+  <body class="body">
+    <!-- header -->
+    <header class="header">
+      <div class="headerContainer">
+        <a href="/" class="headerContainer__title-link">
+          <h2 class="headerContainer__title">Blender Movies</h2>
+        </a>
+
+        <div class="profile">
+          <p class="profile__name">Steffy Jerry</p>
+
+          <figure class="profile__avatar">
+            <img
+              src="assets/profile.png"
+              alt="profile avator"
+              class="profile__avatar-img"
+            />
+          </figure>
+        </div>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main class="main">
+      <!-- content section -->
+      <section class="content">
+        <video
+          controls
+          class="content__video"
+          poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfZRwBm1p7ugENWtIBvaZIj9B4Y9x84ccqbg&s"
+          src="https://ia800200.us.archive.org/7/items/Sintel/sintel-2048-stereo.mp4"
+        ></video>
+
+        <div class="content__details">
+          <h2 class="content__details-title">Sintel</h2>
+          <p class="content__details-desc">
+            "Sintel" is an independently produced short film, initiated by the
+            Blender Foundation as a means to further improve and validate the
+            free/open source 3D creation suite Blender. With initial funding
+            provided by 1000s of donations via the internet community, it has
+            again proven to be a viable development model for both open 3D
+            technology as for independent animation film. This 15 minute film
+            has been realized in the studio of the Amsterdam Blender Institute,
+            by an international team of artists and developers.
+          </p>
+        </div>
+
+        <div class="content__comments">
+          <h2 class="content__comments-title">Comments</h2>
+
+          <div class="comment">
+            <figure class="comment__profile">
+              <img src="assets/profile.png" alt="comment profile" />
+            </figure>
+
+            <div class="comment_details">
+              <h3 class="comment__title">Micheal Scott</h3>
+
+              <p class="comment__desc">
+                How often do people make a film where the main character kills
+                the thing they were trying to rescue because they didn't
+                recognize it? Not that often. This brought tears to my eyes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- upcoming section -->
+      <section class="upcoming">
+        <h2 class="upcoming__title">Upcoming Projects</h2>
+
+        <div class="upcoming__list">
+          <figure class="upcoming__list-item">
+            <img src="assets/profile.png" alt="first" />
+          </figure>
+
+          <figure class="upcoming__list-item">
+            <img src="assets/profile.png" alt="first" />
+          </figure>
+
+          <figure class="upcoming__list-item">
+            <img src="assets/profile.png" alt="first" />
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <!-- chat icon -->
+    <div class="chat">
+      <i class="fa-regular fa-comments"></i>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="footerContainer">
+        <p class="footerContainer__copyrights">@ Copyrights 2022</p>
+        <p class="footerContainer__title">Blender Movies</p>
+      </div>
+    </footer>
+  </body>
+</html>
