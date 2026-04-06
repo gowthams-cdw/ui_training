@@ -1,0 +1,64 @@
+<!-- doctype -->
+<!doctype html>
+
+<!-- html -->
+<html lang="en">
+  <!-- head -->
+  <head>
+    <!-- meta data -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- title -->
+    <title>Math Kid</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link href="index.css" rel="stylesheet" />
+  </head>
+
+  <!-- body -->
+  <body class="body">
+    <!-- header -->
+    <header class="header">
+      <h2 class="header__content">MATH KIDS</h2>
+      <h2 class="header__content">KIDS LEARNING APP</h2>
+    </header>
+
+    <!-- main -->
+    <main class="main">
+      <!-- container to show shape on final result -->
+      <div class="resultContainer__shape"></div>
+
+      <!-- step name -->
+      <h1 class="main__step-name"></h1>
+
+      <!-- interaction -->
+      <section class="interaction">
+        <div class="interaction__shape-container"></div>
+
+        <div class="interaction__input-container">
+          <input type="text" class="interaction__input" autocomplete="on" />
+        </div>
+
+        <div class="resultContainer"></div>
+      </section>
+
+      <!-- next step button -->
+      <button type="button" class="main__next-step-btn hidden">NEXT</button>
+    </main>
+  </body>
+
+  <!-- scripts -->
+  <script src="scripts/index.js" defer type="module"></script>
+</html>
