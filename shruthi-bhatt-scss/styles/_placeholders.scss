@@ -1,0 +1,14 @@
+/* include user defined partials */
+@use "variables" as *;
+
+/* Shared link reset. */
+%link-reset {
+  text-decoration: none;
+  color: $color-text;
+}
+
+/* Shared medium-weight interactive text. */
+%text-medium {
+  font-weight: 500;
+  cursor: pointer;
+}

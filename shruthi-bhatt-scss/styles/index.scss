@@ -1,0 +1,267 @@
+/* import builtin modules */
+@use "sass:list";
+
+/* import custom modules (partial files) */
+@use "functions" as *;
+@use "mixins" as *;
+@use "placeholders" as *;
+@use "variables" as *;
+
+/* universal reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body */
+.body {
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: $font-primary;
+
+  /* container section */
+  .container {
+    width: $container-width;
+    height: 100%;
+    margin: auto;
+
+    /* top container section */
+    &__top-section {
+      @include flex(stretch, flex-start, column);
+
+      /* header section */
+      .header {
+        @include flex(center, flex-end);
+        margin: 3.08rem;
+
+        &__email-desktop {
+          @extend %link-reset;
+          @extend %text-medium;
+          font-size: 1.6rem;
+          @include hover-fade;
+        }
+      }
+
+      /* hero section */
+      .hero {
+        @include flex(center, center, column);
+        gap: 0.28rem;
+        width: 100%;
+        margin-top: 2.8rem;
+
+        &__heading {
+          font-size: 8rem;
+          font-weight: 300;
+          transform: scaleX(1.02);
+
+          span { font-weight: 700; }
+        }
+
+        &__subheading {
+          margin-top: 0.2rem;
+          font-size: 2.7rem;
+          color: $color-text-muted;
+          letter-spacing: 0.04rem;
+
+          span { color: $color-accent; }
+        }
+      }
+    }
+
+    /* showcase section */
+    .showcase {
+      @include flex(center, center);
+      gap: 1.6rem;
+      flex-wrap: wrap;
+      margin-top: 7.25rem;
+
+      &__img-container {
+        height: calc((100% - 1.6rem) / 2);
+        width: calc((100% - 3.2rem) / 3);
+      }
+
+      &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    /* bignames section */
+    .bigNames {
+      @include flex(center, flex-start, column);
+      gap: 4.4rem;
+      padding-top: 7.15rem;
+      padding-bottom: 13.15rem;
+
+      &__heading {
+        font-size: 2.58rem;
+        color: $color-text-muted-2;
+
+        &-highlight { color: $color-accent-green; }
+      }
+
+      &__img-container {
+        @include flex(center, center);
+        flex-wrap: wrap;
+        gap: 5.05rem;
+        width: 100%;
+      }
+    }
+
+    // Logo link reset
+    .bigName__img-link {
+      @extend %link-reset;
+    }
+
+    /* loop through the logos and its dimensions */
+    @each $name, $dims in $logo-sizes {
+      .bigNames__img-#{$name} {
+        width: list.nth($dims, 1);
+        height: list.nth($dims, 2);
+      }
+    }
+
+    .bigNames__img {
+      cursor: pointer;
+      @include hover-fade;
+    }
+
+    /* footer divider */
+    .footer__divider {
+      @include flex(center, center);
+      width: 100%;
+
+      &::before {
+        @include divider-line(1.8rem);
+      }
+
+      &::after {
+        @include divider-line(10.8rem);
+        margin-left: 1.875rem;
+      }
+    }
+
+    /* footer section */
+    .footer {
+      @include flex(center, flex-start, column);
+      gap: 4.35rem;
+      height: 17.5rem;
+
+      &__social-icons {
+        @include flex(center, center);
+        gap: 1rem;
+        margin-top: 5.3rem;
+      }
+
+      &__social-icons-btn {
+        @include circle-btn(2.5rem, 0.7rem);
+      }
+
+      &__social-link {
+        @extend %link-reset;
+
+        i {
+          font-size: 1.2rem;
+          color: $color-text;
+        }
+
+        .medium__icon {
+          font-family: $font-serif;
+        }
+      }
+
+      &__quote {
+        font-family: $font-secondary;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+
+/* ================= */
+/* responsive styles */
+/* ================= */
+
+/* tablet */
+@include respond-to("tablet") {
+  .body {
+    .container {
+      width: 100%;
+
+      &__top-section {
+        .header {
+          justify-content: center;
+          order: 2;
+        }
+
+        .hero {
+          order: 1;
+          margin-top: 16rem;
+
+          &__heading    { font-size: 6rem; }
+          &__subheading { font-size: 3.3rem; }
+        }
+      }
+
+      .showcase {
+        margin-top: 6.5rem;
+        &__img-container { width: 45%; }
+      }
+
+      .bigNames__heading { font-size: 2.5rem; }
+    }
+  }
+}
+
+/* mobile */
+@include respond-to("mobile") {
+  .body {
+    .container {
+
+      &__top-section {
+        .header {
+          margin: 0.5rem;
+          &__email-desktop { font-size: 1.15rem; }
+        }
+
+        .hero {
+          &__heading    { font-size: 3.5rem; }
+          &__subheading { font-size: 2rem; }
+        }
+      }
+
+      .showcase__img-container { width: 90%; }
+
+      .bigNames__heading {
+        font-size: 2.5rem;
+        color: $color-text-muted-2;
+      }
+
+      .footer__divider {
+        &::before { max-width: 1.2rem; }
+        &::after  { margin-left: 1.875rem; max-width: 8.1rem; }
+      }
+
+      .footer {
+        height: 14.5rem;
+        gap: 3.3rem;
+
+        &__social-icons {
+          margin-top: 2.5rem;
+          gap: 1.2rem;
+        }
+
+        &__social-icons-btn {
+          @include circle-btn(3rem, 0.7rem);
+        }
+
+        &__social-link i { font-size: 1.6rem; }
+
+        &__quote { font-size: 1.25rem; }
+      }
+    }
+  }
+}
