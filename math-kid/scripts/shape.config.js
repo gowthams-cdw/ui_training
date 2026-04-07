@@ -98,4 +98,41 @@ export const shapeConfig = {
 			},
 		],
 	},
+
+	// hexagon: {
+	// 	name: "Regular Hexagon",
+	// 	color: "#ffb703",
+	//
+	// 	create(el, { size }) {
+	// 		const width = size;
+	// 		const height = size * 0.866;
+	//
+	// 		el.style.width = width + "rem";
+	// 		el.style.height = height + "rem";
+	// 		el.style.background = this.color;
+	// 		el.style.clipPath =
+	// 			"polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)";
+	// 	},
+	//
+	// 	inputPlaceHolder: "Enter Side",
+	//
+	// 	data: [
+	// 		{
+	// 			label: "SIDE",
+	// 			value: "s",
+	// 			calculate: (side) => `${side.toFixed(2)} cm`,
+	// 		},
+	// 		{
+	// 			label: "AREA",
+	// 			value: "(3√3/2) * s²",
+	// 			calculate: (side) =>
+	// 				`${(((3 * Math.sqrt(3)) / 2) * side * side).toFixed(2)} sq cm`,
+	// 		},
+	// 		{
+	// 			label: "PERIMETER",
+	// 			value: "6 * s",
+	// 			calculate: (side) => `${(6 * side).toFixed(2)} cm`,
+	// 		},
+	// 	],
+	// },
 };
