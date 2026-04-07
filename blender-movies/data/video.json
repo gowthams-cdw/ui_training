@@ -5,37 +5,37 @@
     "comments": [
         {
             "name": "Micheal Scott",
-            "image": "images/reviewers/micheal.png",
+            "image": "assets/reviewers/micheal.png",
             "comment": "How often do people make a film where the main character kills the thing they were trying to rescue because they didn’t recognize it? Not that often. This brought tears to my eyes."
         },
         {
             "name": "Dwight K Schrute (Asst. to the Regional Manager)",
-            "image": "images/reviewers/dwight.png",
+            "image": "assets/reviewers/dwight.png",
             "comment": "Breathtaking, I’ve only just begun my blender journey. Making something every day until I get to the point I can create something on this scale. Pretty amazing short story as well. Props all around to all involved in this great piece of work!"
         },
         {
             "name": "Jim Halpert",
-            "image": "images/reviewers/jim.png",
+            "image": "assets/reviewers/jim.png",
             "comment": "Only the best stories can make you cry, and while I’ve lost count how many times I’ve watched this remarkable piece of art  over the years showing it to people I know, Sintel brings a tear to my eye every time. This film is inspiring not only for the beautiful story but for the magical quality animation."
         },
         {
             "name": "Pam Beesly Halpert",
-            "image": "images/reviewers/pam.png",
+            "image": "assets/reviewers/pam.png",
             "comment": "This short film was riveting. The musical overlay was astounding and so were the animations. I was bawling like a little kid at the end of this video and not many videos are able to do this to me."
         },
         {
             "name": "Angela Martin",
-            "image": "images/reviewers/angela.png",
+            "image": "assets/reviewers/angela.png",
             "comment": "I saw this movie a long time ago as a child and it still scars me to this day. This is the kind of stuff that should AT THE VERY LEAST be played before a movie the way they showed bao before The Incredibles 2. These are little masterpieces."
         },
         {
             "name": "Kevin Malone",
-            "image": "images/reviewers/kevin.png",
+            "image": "assets/reviewers/kevin.png",
             "comment": "Wow, at first I thought that it wasn’t that good, nice animation and all but not excellent story. Then I saw the end. The feels are real. You win Blender Foundation, you win."
         },
         {
             "name": "Andy Bernard",
-            "image": "images/reviewers/andy.png",
+            "image": "assets/reviewers/andy.png",
             "comment": "Honestly seeing a story with a sad ending is refreshing, I can tell you the ending of 99% of all movies ever made. “Its a happy ending”. Its why I like game of thrones and its why I loved this."
         }
     ]
