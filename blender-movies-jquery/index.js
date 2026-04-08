@@ -7,15 +7,16 @@ $(document).ready(() => {
 	const $description = $(".content__details-desc");
 	const $commentsContainer = $(".content__comments");
 	const $upcomingList = $(".upcoming__list");
+	const $videoContainer = $(".video__container");
 
 	// play - pause functionality
-	$videoPlayButton.on("click", function () {
+	$videoContainer.on("click", () => {
 		if ($video[0].paused) {
 			$video[0].play();
-			$(this).removeClass("fa-play").addClass("fa-pause");
+			$videoPlayButton.removeClass("fa-play").addClass("fa-pause");
 		} else {
 			$video[0].pause();
-			$(this).removeClass("fa-pause").addClass("fa-play");
+			$videoPlayButton.removeClass("fa-pause").addClass("fa-play");
 		}
 	});
 
@@ -60,9 +61,6 @@ $(document).ready(() => {
 
 	// render comments
 	const renderComments = (comments) => {
-		// empty previous comments
-		$commentsContainer.empty();
-
 		// loop comments and render each comment
 		$.each(comments, (_, comment) => {
 			const commentEl = $(`
@@ -83,9 +81,6 @@ $(document).ready(() => {
 
 	// render posters
 	const renderPosters = (posters) => {
-		// empty previous posters
-		$upcomingList.empty();
-
 		// loop each posters and render each poster
 		$.each(posters, (_, poster) => {
 			const posterEl = $(`
