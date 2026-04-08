@@ -1,3 +1,5 @@
+import { colors, months } from "./constants.js";
+
 // global state
 const notes = JSON.parse(localStorage.getItem("notes")) || {};
 const noteId = window.location.hash.substring(1);
@@ -7,6 +9,8 @@ if (!note) window.location.href = "404.html";
 
 // query selectors
 const mainContainer = document.querySelector(".main");
+
+const colorIcon = document.querySelector(".color-icon");
 
 const deleteNoteButton = document.querySelector(".header__actions-delete");
 const deleteNoteCloseButton = document.querySelector(".delete-note__close");
@@ -79,6 +83,44 @@ const loadNote = () => {
 };
 loadNote();
 
+// function to reset the edit note form
+const resetData = () => {
+	editNoteTitleInput.value = note.title;
+	editNoteContentInput.value = note.content;
+	editNoteImageInput.value = note.img;
+
+	// define color elements
+	const colorElements = [
+		editNoteColorBubblegumCrisis,
+		editNoteColorEmptiness,
+		editNoteColorBananabread,
+		editNoteColorPineappleperfume,
+		editNoteColorPeachfizz,
+	];
+	colorElements.forEach((el) => {
+		el.classList.remove("selected");
+	});
+	switch (note.color) {
+		case "bubblegumCrisis":
+			editNoteColorBubblegumCrisis.classList.add("selected");
+			break;
+		case "emptiness":
+			editNoteColorEmptiness.classList.add("selected");
+			break;
+		case "bananaBread":
+			editNoteColorBananabread.classList.add("selected");
+			break;
+		case "pineapplePerfume":
+			editNoteColorPineappleperfume.classList.add("selected");
+			break;
+		case "peachFizz":
+			editNoteColorPeachfizz.classList.add("selected");
+			break;
+		default:
+			break;
+	}
+};
+
 // ===================
 // DELETE NOTE SECTION
 // ===================
@@ -121,6 +163,7 @@ deleteNoteConfirmButton.addEventListener("click", () => {
 
 // open model
 const openEditNoteModel = () => {
+	resetData();
 	editNoteWrapper.style.display = "flex";
 };
 editNoteButton.addEventListener("click", openEditNoteModel);
@@ -144,7 +187,6 @@ let color = note.color;
 
 const curDate = new Date();
 const date = `${months[curDate.getMonth()]} ${curDate.getDate()}, ${curDate.getFullYear()}`;
-const id = note.id; // use existing id for edit note
 
 editNoteTitleInput.addEventListener("input", (e) => {
 	title = e.target.value;
@@ -172,6 +214,13 @@ editNoteContentInput.addEventListener("input", (e) => {
 });
 
 // colors change validators
+const colorElements = [
+	editNoteColorBubblegumCrisis,
+	editNoteColorEmptiness,
+	editNoteColorBananabread,
+	editNoteColorPineappleperfume,
+	editNoteColorPeachfizz,
+];
 editNoteColorBubblegumCrisis.addEventListener("click", () => {
 	colorElements.forEach((el) => {
 		el.classList.remove("selected");
@@ -210,42 +259,6 @@ editNoteColorPeachfizz.addEventListener("click", () => {
 
 // edit note
 const editNote = () => {
-	// initial data
-	editNoteTitleInput.value = note.title;
-	editNoteImageInput.value = note.img;
-	editNoteContentInput.value = note.content;
-
-	// define color elements
-	const colorElements = [
-		editNoteColorBubblegumCrisis,
-		editNoteColorEmptiness,
-		editNoteColorBananabread,
-		editNoteColorPineappleperfume,
-		editNoteColorPeachfizz,
-	];
-	colorElements.forEach((el) => {
-		el.classList.remove("selected");
-	});
-	switch (note.color) {
-		case "bubblegumCrisis":
-			editNoteColorBubblegumCrisis.classList.add("selected");
-			break;
-		case "emptiness":
-			editNoteColorEmptiness.classList.add("selected");
-			break;
-		case "bananaBread":
-			editNoteColorBananabread.classList.add("selected");
-			break;
-		case "pineapplePerfume":
-			editNoteColorPineappleperfume.classList.add("selected");
-			break;
-		case "peachFizz":
-			editNoteColorPeachfizz.classList.add("selected");
-			break;
-		default:
-			break;
-	}
-
 	const editNote = {
 		title,
 		img,
@@ -254,9 +267,12 @@ const editNote = () => {
 		date,
 	};
 
-	notes[id] = editNote;
+	notes[noteId] = editNote;
 
 	localStorage.setItem("notes", JSON.stringify(notes));
 	window.location.reload();
 };
 editNoteSubmitButton.addEventListener("click", editNote);
+
+// color-icon
+colorIcon.style.backgroundColor = colors[note.color]

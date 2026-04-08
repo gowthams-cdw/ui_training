@@ -14,15 +14,18 @@
 	--peach-fizz: #f2ab90;
 }
 
+/* body */
 .body {
 	background-color: #000000;
 	font-family: "Lato", sans-serif;
 
+	/* header */
 	.header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		position: fixed;
+		z-index: 1;
 		width: 100%;
 		background-color: #0a1c2d;
 		color: #ffffff;
@@ -45,6 +48,7 @@
 			}
 		}
 
+		/* header actions */
 		.header__actions {
 			display: flex;
 			justify-content: center;
@@ -72,6 +76,7 @@
 			}
 
 			.header__actions-new {
+				padding: 0.5rem 1.9rem;
 				background-color: #a759b2;
 			}
 		}
