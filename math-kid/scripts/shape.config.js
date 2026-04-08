@@ -34,16 +34,16 @@ export const shapeConfig = {
 
 	triangle: {
 		name: "Equilateral Triangle",
-		color: "#e0e0e0",
+		color: "#f3afda",
 
-		create(el, { size }) {
-			const half = size / 2;
-			const height = Math.sqrt(3) * half;
+		create(el, { base, height }) {
+			// const half = size / 2;
+			// const height = Math.sqrt(3) * half;
 
 			el.style.width = "0";
 			el.style.height = "0";
 			el.style.borderStyle = "solid";
-			el.style.borderWidth = `0 ${half}rem ${height}rem ${half}rem`;
+			el.style.borderWidth = `0 ${base}rem ${height}rem ${base}rem`;
 			el.style.borderColor = `transparent transparent ${this.color} transparent`;
 		},
 
@@ -70,7 +70,7 @@ export const shapeConfig = {
 
 	square: {
 		name: "Square",
-		color: "#f3afda",
+		color: "#e0e0e0",
 
 		create(el, { size }) {
 			el.style.width = size + "rem";

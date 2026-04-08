@@ -10,6 +10,7 @@ const showContainer = (container) => {
 };
 
 // elements
+const mainContainer = document.querySelector(".main");
 const stepName = document.querySelector(".main__step-name");
 const shapeContainer = document.querySelector(".interaction__shape-container");
 const inputContainer = document.querySelector(".interaction__input-container");
@@ -41,9 +42,16 @@ Object.entries(shapeConfig).forEach(([key, shape]) => {
 	const el = document.createElement("div");
 	el.classList.add("shape", key);
 
-	shape.create(el, {
-		size: 7.375,
-	});
+	if (key === "triangle") {
+		shape.create(el, {
+			base: 3.9,
+			height: 7.6,
+		});
+	} else {
+		shape.create(el, {
+			size: 7.37,
+		});
+	}
 
 	wrapper.addEventListener("click", () => {
 		document
@@ -87,6 +95,8 @@ nextBtn.addEventListener("click", () => {
 
 	switch (step) {
 		case 1:
+			mainContainer.classList.remove("result-step");
+
 			// remove selected state from shapes
 			selectedShape = null;
 			document
@@ -97,13 +107,19 @@ nextBtn.addEventListener("click", () => {
 			showContainer(shapeContainer);
 			stepName.innerText = "1. Choose a Shape";
 			nextBtn.innerText = "NEXT";
+
 			break;
 		case 2:
+			mainContainer.classList.add("input-step");
+
 			showContainer(inputContainer);
 			stepName.innerText = `2. ${shapeConfig[selectedShape].inputPlaceHolder}`;
 			nextBtn.innerText = "CALCULATE";
 			break;
 		case 3: {
+			mainContainer.classList.remove("input-step");
+			mainContainer.classList.add("result-step");
+
 			showContainer(resultContainerShape);
 			showContainer(resultContainer);
 
@@ -112,9 +128,16 @@ nextBtn.addEventListener("click", () => {
 			const resultEl = document.createElement("div");
 			resultEl.classList.add("shape", selectedShape);
 
-			shapeConfig[selectedShape].create(resultEl, {
-				size: 7.375,
-			});
+			if (selectedShape === "triangle") {
+				shapeConfig[selectedShape].create(resultEl, {
+					base: 4.1,
+					height: 7.9,
+				});
+			} else {
+				shapeConfig[selectedShape].create(resultEl, {
+					size: 8,
+				});
+			}
 
 			resultContainerShape.appendChild(resultEl);
 
