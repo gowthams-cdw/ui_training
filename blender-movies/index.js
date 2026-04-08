@@ -5,9 +5,11 @@ const title = document.querySelector(".content__details-title");
 const description = document.querySelector(".content__details-desc");
 const commentsContainer = document.querySelector(".content__comments");
 const upcomingList = document.querySelector(".upcoming__list");
+const pauseButtonIcon = document.querySelector(".fa-pause");
+const videoContainer = document.querySelector(".video__container");
 
 // play - pause functionality
-videoPlayButton.addEventListener("click", () => {
+videoContainer.addEventListener("click", () => {
 	if (video.paused) {
 		video.play();
 		videoPlayButton.classList.replace("fa-play", "fa-pause");
