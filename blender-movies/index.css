@@ -292,6 +292,10 @@
 
 				.upcoming {
 					width: 100%;
+
+					.upcoming__list .upcoming__list-item {
+						height: auto;
+					}
 				}
 			}
 		}
