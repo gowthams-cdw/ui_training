@@ -1,0 +1,150 @@
+<!-- doctype -->
+<!doctype html>
+
+<!-- html -->
+<html lang="en">
+  <!-- head -->
+  <head>
+    <!-- meta data -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- title -->
+    <title>Pocket Notes</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link href="styles/index.css" rel="stylesheet" />
+  </head>
+
+  <!-- body -->
+  <body class="body">
+    <!-- header section -->
+    <header class="header">
+      <!-- header logo -->
+      <a href="/" class="header__title-link">
+        <h1 class="header__title">Pocket Notes</h1>
+      </a>
+
+      <!-- header actions -->
+      <div class="header__actions">
+        <!-- delete all -->
+        <button class="header__actions-deleteall">DELETE ALL</button>
+
+        <!-- new button -->
+        <button class="header__actions-new">NEW</button>
+      </div>
+    </header>
+
+    <!-- main section -->
+    <main class="main">
+      <!-- cards -->
+    </main>
+
+    <!-- delete all section -->
+    <!-- overlay part -->
+    <section class="delete-all__wrapper">
+      <!-- actual container -->
+      <div class="delete-all__container">
+        <!-- delete all header -->
+        <div class="delete-all__header">
+          <h3 class="delete-all__header-title">CONFIRM DELETE</h3>
+
+          <i class="fa-solid fa-xmark delete-all__close"></i>
+        </div>
+
+        <!-- delete all content -->
+        <p class="delete-all__content">
+          Are you sure you want to delete all notes?
+        </p>
+
+        <!-- confirm button -->
+        <button type="button" class="delete-all__btn">YES, DELETE</button>
+      </div>
+    </section>
+
+    <!-- new note section -->
+    <!-- overlay part -->
+    <section class="new-note__wrapper">
+      <!-- actual container -->
+      <div class="new-note__container">
+        <!-- new note header -->
+        <div class="new-note__header">
+          <h3 class="new-note__header-title">NEW NOTE</h3>
+
+          <i class="fa-solid fa-xmark new-note__close"></i>
+        </div>
+
+        <!-- new note inputs content -->
+        <div class="new-note__inputs">
+          <!-- note title -->
+          <input
+            type="text"
+            name="title"
+            placeholder="Notes Title"
+            class="new-note__input-title"
+          />
+
+          <!-- note img url -->
+          <input
+            type="text"
+            name="img-url"
+            placeholder="Add image URL"
+            class="new-note__input-img-url"
+          />
+
+          <!-- note content -->
+          <textarea
+            placeholder="Add content here"
+            class="new-note__input-content"
+          ></textarea>
+        </div>
+
+        <!-- new note footer -->
+        <div class="new-note__footer">
+          <!-- new note colors -->
+          <div class="new-note__footer-colors">
+            <div class="new-note__colors selected bubblegum-crisis"></div>
+            <div class="new-note__colors emptiness"></div>
+            <div class="new-note__colors bananabread"></div>
+            <div class="new-note__colors pineappleperfume"></div>
+            <div class="new-note__colors peachfizz"></div>
+          </div>
+
+          <!-- new note save button -->
+          <button
+            type="button"
+            class="new-note__footer-add-btn"
+            disabled="true"
+          >
+            ADD
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- load more -->
+    <div class="load-more__container">
+      <button type="button" class="load-more__btn">LOAD MORE</button>
+    </div>
+  </body>
+
+  <!-- scripts -->
+  <script src="scripts/index.js" defer type="module"></script>
+</html>

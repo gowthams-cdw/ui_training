@@ -1,0 +1,142 @@
+<!-- doctype -->
+<!doctype html>
+
+<!-- html -->
+<html lang="en">
+  <!-- head -->
+  <head>
+    <!-- meta data -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- title -->
+    <title>Pocket Notes</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link href="styles/articles.css" rel="stylesheet" />
+  </head>
+
+  <!-- body -->
+  <body class="body">
+    <!-- header section -->
+    <header class="header">
+      <!-- header logo -->
+      <a href="/" class="header__title-link">
+        <h2 class="header__title">
+          <span>
+            <i class="fa-solid fa-arrow-left"></i>
+          </span>
+          Pocket Notes
+        </h2>
+      </a>
+
+      <!-- header actions -->
+      <div class="header__actions">
+        <!-- delete -->
+        <button class="header__actions-delete">DELETE</button>
+
+        <!-- view buttno -->
+        <button class="header__actions-edit">EDIT</button>
+      </div>
+    </header>
+
+    <!-- main section -->
+    <main class="main"></main>
+
+    <!-- delete section -->
+    <!-- overlay part -->
+    <section class="delete-note__wrapper">
+      <!-- actual container -->
+      <div class="delete-note__container">
+        <!-- delete all header -->
+        <div class="delete-note__header">
+          <h3 class="delete-note__header-title">CONFIRM DELETE</h3>
+
+          <i class="fa-solid fa-xmark delete-note__close"></i>
+        </div>
+
+        <!-- delete all content -->
+        <p class="delete-note__content">
+          Are you sure you want to delete this note?
+        </p>
+
+        <!-- confirm button -->
+        <button type="button" class="delete-note__btn">YES, DELETE</button>
+      </div>
+    </section>
+
+    <!-- edit note section -->
+    <!-- overlay part -->
+    <section class="edit-note__wrapper">
+      <!-- actual container -->
+      <div class="edit-note__container">
+        <!-- edit note header -->
+        <div class="edit-note__header">
+          <h3 class="edit-note__header-title">EDIT NOTE</h3>
+
+          <i class="fa-solid fa-xmark edit-note__close"></i>
+        </div>
+
+        <!-- edit note inputs content -->
+        <div class="edit-note__inputs">
+          <!-- note title -->
+          <input
+            type="text"
+            name="title"
+            placeholder="Notes Title"
+            class="edit-note__input-title"
+          />
+
+          <!-- note img url -->
+          <input
+            type="text"
+            name="img-url"
+            placeholder="Add image URL"
+            class="edit-note__input-img-url"
+          />
+
+          <!-- note content -->
+          <textarea
+            placeholder="Add content here"
+            class="edit-note__input-content"
+          ></textarea>
+        </div>
+
+        <!-- edit note footer -->
+        <div class="edit-note__footer">
+          <!-- edit note colors -->
+          <div class="edit-note__footer-colors">
+            <div class="edit-note__colors selected bubblegum-crisis"></div>
+            <div class="edit-note__colors emptiness"></div>
+            <div class="edit-note__colors bananabread"></div>
+            <div class="edit-note__colors pineappleperfume"></div>
+            <div class="edit-note__colors peachfizz"></div>
+          </div>
+
+          <!-- edit note save button -->
+          <button type="button" class="edit-note__footer-add-btn">SAVE</button>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <!-- scripts -->
+  <script src="scripts/articles.js" defer type="module"></script>
+</html>
