@@ -106,6 +106,11 @@ loadData();
 // DELETE ALL ACTIONS
 // ==================
 
+// make delete all disabled if no notes
+if (Object.keys(notes).length === 0) {
+	deleteAllButton.disabled = true;
+}
+
 // open model
 const openDeleteAllModel = () => {
 	deleteAllWrapper.style.display = "flex";
@@ -142,15 +147,15 @@ loadMoreButton.addEventListener("click", loadData);
 
 // open model
 const openNewNoteModel = () => {
+	newNoteTitleInput.value = "";
+	newNoteImageInput.value = "";
+	newNoteContentInput.value = "";
 	newNoteWrapper.style.display = "flex";
 };
 newNoteButton.addEventListener("click", openNewNoteModel);
 
 // close model
 const closeNewNoteModel = () => {
-	newNoteTitleInput.value = "";
-	newNoteImageInput.value = "";
-	newNoteContentInput.value = "";
 	newNoteWrapper.style.display = "none";
 };
 newNoteButtonClose.addEventListener("click", closeNewNoteModel);
