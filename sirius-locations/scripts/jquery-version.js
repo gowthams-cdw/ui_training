@@ -1,8 +1,29 @@
 // imports
 import { countryCodes } from "./constants.js";
 
+// utility function to create location html
+const createLocationHTML = (location) => {
+	const flagCode = countryCodes[location.country];
+
+	return `
+		<div class="location">
+			<figure class="location__img-container">
+				<img
+					src="https://flagsapi.com/${flagCode}/flat/64.png"
+					alt="${location.country}"
+					class="location__img"
+				/>
+			</figure>
+			<p class="location__name">${location.state}</p>
+			<p class="location__subname">${location.city}</p>
+			<p class="location__phone">${location.contact}</p>
+		</div>
+	`;
+};
+
 // wait for document to load
 $(document).ready(() => {
+	// query selectors
 	const $aboutUsContainer = $(".about-us");
 	const $solutionsContainer = $(".solutions");
 	const $locationsContainer = $(".locations");
@@ -16,6 +37,22 @@ $(document).ready(() => {
 	// utility function to hide and show containers
 	const hideContainer = ($el) => $el.hide();
 	const showContainer = ($el) => $el.show();
+
+	// tabs navigation utility functions
+	const tabs = [
+		{ btn: $aboutUsBtn, container: $aboutUsContainer },
+		{ btn: $solutionsBtn, container: $solutionsContainer },
+		{ btn: $locationsBtn, container: $locationsContainer },
+	];
+	const handleTabClick = ($activeBtn, $activeContainer) => {
+		tabs.forEach(({ btn, container }) => {
+			btn.removeClass("selected");
+			hideContainer(container);
+		});
+
+		$activeBtn.addClass("selected");
+		showContainer($activeContainer);
+	};
 
 	// utility function to parse json data from file path
 	const parseJsonData = async (path) => {
@@ -31,35 +68,8 @@ $(document).ready(() => {
 	const loadInitialData = async () => {
 		const locations = await parseJsonData("data/locations.json");
 
-		locations.forEach((location) => {
-			const $locationElement = $("<div>").addClass("location");
-
-			const $figure = $("<figure>").addClass("location__img-container");
-			const $img = $("<img>")
-				.attr(
-					"src",
-					`https://flagsapi.com/${countryCodes[location.country]}/flat/64.png`,
-				)
-				.attr("alt", location.country)
-				.addClass("location__img");
-
-			$figure.append($img);
-			$locationElement.append($figure);
-
-			const $name = $("<p>").addClass("location__name").text(location.state);
-
-			const $subname = $("<p>")
-				.addClass("location__subname")
-				.text(location.city);
-
-			const $phone = $("<p>")
-				.addClass("location__phone")
-				.text(location.contact);
-
-			$locationElement.append($name, $subname, $phone);
-
-			$locationsContainer.append($locationElement);
-		});
+		const locationsHTML = locations.map(createLocationHTML).join("");
+		$locationsContainer.append(locationsHTML);
 
 		$aboutUsBtn.addClass("selected");
 	};
@@ -67,46 +77,13 @@ $(document).ready(() => {
 	// bind event listeners
 	const bindEventListeners = () => {
 		// nav buttons listeners
-		$aboutUsBtn.on("click", () => {
-			// button change
-			$solutionsBtn.removeClass("selected");
-			$locationsBtn.removeClass("selected");
-			$aboutUsBtn.addClass("selected");
-
-			// containers change
-			hideContainer($solutionsContainer);
-			hideContainer($locationsContainer);
-			showContainer($aboutUsContainer);
-		});
-
-		$solutionsBtn.on("click", () => {
-			// button change
-			$aboutUsBtn.removeClass("selected");
-			$locationsBtn.removeClass("selected");
-			$solutionsBtn.addClass("selected");
-
-			// containers change
-			hideContainer($aboutUsContainer);
-			hideContainer($locationsContainer);
-			showContainer($solutionsContainer);
-		});
-
-		$locationsBtn.on("click", () => {
-			// button change
-			$aboutUsBtn.removeClass("selected");
-			$solutionsBtn.removeClass("selected");
-			$locationsBtn.addClass("selected");
-
-			// containers change
-			hideContainer($aboutUsContainer);
-			hideContainer($solutionsContainer);
-			showContainer($locationsContainer);
+		tabs.forEach(({ btn, container }) => {
+			btn.on("click", () => handleTabClick(btn, container));
 		});
 
 		// accordion listeners
 		$accordions.on("click", function () {
-			$(this).toggleClass("selected");
-			// $(this).toggleClass("selected").siblings().removeClass("selected");
+			$(this).toggleClass("selected").siblings().removeClass("selected");
 		});
 	};
 
@@ -124,3 +101,6 @@ $(document).ready(() => {
 	};
 	init();
 });
+
+// initial size
+// 125 lines
