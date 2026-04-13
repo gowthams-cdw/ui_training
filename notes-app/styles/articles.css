@@ -143,11 +143,14 @@
 			font-size: 0.96rem;
 			font-weight: 300;
 			line-height: 1.5;
+			word-break: break-word;
+			overflow-wrap: break-word;
 		}
 	}
 
 	/* delete post section */
-	.delete-note__wrapper, .close__wrapper {
+	.delete-note__wrapper,
+	.close__wrapper {
 		display: none; /* flex => to show on delete all click */
 		justify-content: center;
 		align-items: center;
@@ -156,7 +159,8 @@
 		z-index: 2;
 		background-color: #31313170;
 
-		.delete-note__container, .close__container {
+		.delete-note__container,
+		.close__container {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -167,7 +171,8 @@
 			width: 28.75rem;
 			padding: 0.5rem 0.5rem 1.5rem 0.5rem;
 
-			.delete-note__header, .close__header {
+			.delete-note__header,
+			.close__header {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
@@ -183,11 +188,13 @@
 				}
 			}
 
-			.delete-note__content, .close__content {
+			.delete-note__content,
+			.close__content {
 				font-size: 0.9rem;
 			}
 
-			.delete-note__btn, .close__btn {
+			.delete-note__btn,
+			.close__btn {
 				padding: 0.5rem 1.8rem;
 				cursor: pointer;
 				border-radius: 3.125rem;
