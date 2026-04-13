@@ -1,25 +1,6 @@
 // imports
 import { countryCodes } from "./constants.js";
-
-// utility function to create location html
-const createLocationHTML = (location) => {
-	const flagCode = countryCodes[location.country];
-
-	return `
-		<div class="location">
-			<figure class="location__img-container">
-				<img
-					src="https://flagsapi.com/${flagCode}/flat/64.png"
-					alt="${location.country}"
-					class="location__img"
-				/>
-			</figure>
-			<p class="location__name">${location.state}</p>
-			<p class="location__subname">${location.city}</p>
-			<p class="location__phone">${location.contact}</p>
-		</div>
-	`;
-};
+import { createElement } from "./utils.js";
 
 // wait for document to load
 $(document).ready(() => {
@@ -68,8 +49,53 @@ $(document).ready(() => {
 	const loadInitialData = async () => {
 		const locations = await parseJsonData("data/locations.json");
 
-		const locationsHTML = locations.map(createLocationHTML).join("");
-		$locationsContainer.append(locationsHTML);
+		locations.forEach((location) => {
+			const locationEl = createElement({
+				tag: "div",
+				className: "location",
+			});
+
+			const figureEl = createElement({
+				tag: "figure",
+				className: "location__img-container",
+			});
+
+			const imgEl = createElement({
+				tag: "img",
+				className: "location__img",
+				attrs: {
+					src: `https://flagsapi.com/${countryCodes[location.country]}/flat/64.png`,
+					alt: location.country,
+				},
+			});
+
+			figureEl.appendChild(imgEl);
+
+			const locationNameEl = createElement({
+				tag: "p",
+				className: "location__name",
+				text: location.state,
+			});
+
+			const locationSubNameEl = createElement({
+				tag: "p",
+				className: "location__subname",
+				text: location.city,
+			});
+
+			const locationPhoneEl = createElement({
+				tag: "p",
+				className: "location__phone",
+				text: location.contact,
+			});
+
+			locationEl.appendChild(figureEl);
+			locationEl.appendChild(locationNameEl);
+			locationEl.appendChild(locationSubNameEl);
+			locationEl.appendChild(locationPhoneEl);
+
+			$locationsContainer.append(locationEl);
+		});
 
 		$aboutUsBtn.addClass("selected");
 	};
@@ -83,6 +109,13 @@ $(document).ready(() => {
 
 		// accordion listeners
 		$accordions.on("click", function () {
+			if (
+				$(this).hasClass("selected") &&
+				$accordions.filter(".selected").length === 1
+			) {
+				return;
+			}
+
 			$(this).toggleClass("selected").siblings().removeClass("selected");
 		});
 	};

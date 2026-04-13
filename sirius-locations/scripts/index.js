@@ -1,5 +1,6 @@
 // imports
 import { countryCodes } from "./constants.js";
+import { createElement } from "./utils.js";
 
 // query selectors
 const aboutUsContainer = document.querySelector(".about-us");
@@ -45,36 +46,50 @@ const loadInitialData = async () => {
 
 	// populate the locations
 	locations.forEach((location) => {
-		const locationElement = document.createElement("div");
-		locationElement.classList.add("location");
+		const locationElement = createElement({
+			tag: "div",
+			className: "location",
+		});
 
 		// img section
-		const figureElement = document.createElement("figure");
-		figureElement.classList.add("location__img-container");
+		const figureElement = createElement({
+			tag: "figure",
+			className: "location__img-container",
+		});
 
-		const imgElement = document.createElement("img");
-		imgElement.src = `https://flagsapi.com/${countryCodes[location.country]}/flat/64.png`;
-		imgElement.alt = location.country;
-		imgElement.classList.add("location__img");
+		const imgElement = createElement({
+			tag: "img",
+			attrs: {
+				src: `https://flagsapi.com/${countryCodes[location.country]}/flat/64.png`,
+				alt: location.country,
+			},
+			className: "location__img",
+		});
 		figureElement.appendChild(imgElement);
 		locationElement.appendChild(figureElement);
 
 		// name section
-		const nameElement = document.createElement("p");
-		nameElement.classList.add("location__name");
-		nameElement.textContent = location.state;
+		const nameElement = createElement({
+			tag: "p",
+			text: location.state,
+			className: "location__name",
+		});
 		locationElement.appendChild(nameElement);
 
 		// subname section
-		const subnameElement = document.createElement("p");
-		subnameElement.classList.add("location__subname");
-		subnameElement.textContent = location.city;
+		const subnameElement = createElement({
+			tag: "p",
+			className: "location__subname",
+			text: location.city,
+		});
 		locationElement.appendChild(subnameElement);
 
 		// phone section
-		const phoneElement = document.createElement("p");
-		phoneElement.classList.add("location__phone");
-		phoneElement.textContent = location.contact;
+		const phoneElement = createElement({
+			tag: "p",
+			className: "location__phone",
+			text: location.contact,
+		});
 		locationElement.appendChild(phoneElement);
 
 		// append to locations container
