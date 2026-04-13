@@ -1,4 +1,4 @@
-export const colors = {
+export const COLORS = {
 	bubblegumCrisis: "#e6cdeb",
 	emptiness: "#fcfcfc",
 	bananaBread: "#f7cc7f",
@@ -6,7 +6,7 @@ export const colors = {
 	peachFizz: "#f2ab90",
 };
 
-export const months = [
+export const MONTHS = [
 	"Jan",
 	"Feb",
 	"Mar",

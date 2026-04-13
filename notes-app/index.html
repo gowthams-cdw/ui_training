@@ -61,6 +61,17 @@
     <!-- main section -->
     <main class="main">
       <!-- cards -->
+
+      <!-- empty state -->
+      <div class="main__empty">
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <polygon points="100,20 170,60 100,100 30,60" />
+          <polygon points="30,60 100,100 100,180 30,140" />
+          <polygon points="100,100 170,60 170,140 100,180" />
+        </svg>
+
+        <p class="empty__text">Notes you add appear here</p>
+      </div>
     </main>
 
     <!-- delete all section -->
@@ -126,7 +137,7 @@
         <div class="new-note__footer">
           <!-- new note colors -->
           <div class="new-note__footer-colors">
-            <div class="new-note__colors selected bubblegum-crisis"></div>
+            <div class="new-note__colors bubblegum-crisis"></div>
             <div class="new-note__colors emptiness"></div>
             <div class="new-note__colors bananabread"></div>
             <div class="new-note__colors pineappleperfume"></div>
@@ -142,6 +153,29 @@
             ADD
           </button>
         </div>
+      </div>
+    </section>
+
+    <!-- close while editing all section -->
+    <!-- overlay part -->
+    <section class="close__wrapper">
+      <!-- actual container -->
+      <div class="close__container">
+        <!-- close header -->
+        <div class="close__header">
+          <h3 class="close__header-title">CONFIRM DELETE</h3>
+
+          <i class="fa-solid fa-xmark close__close"></i>
+        </div>
+
+        <!-- close content -->
+        <p class="close__content">
+          Seems like you are in the middle of adding/editing content. Do you
+          want to leave?
+        </p>
+
+        <!-- confirm button -->
+        <button type="button" class="close__btn">YES, CLOSE</button>
       </div>
     </section>
 

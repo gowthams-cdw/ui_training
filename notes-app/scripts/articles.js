@@ -1,11 +1,15 @@
-import { colors, months } from "./constants.js";
+import { COLORS, MONTHS } from "./constants.js";
+import { createElement, isValidNote } from "./utils.js";
 
 // global state
 const notes = JSON.parse(localStorage.getItem("notes")) || {};
 const noteId = window.location.hash.substring(1);
 const note = notes[noteId];
 
-if (!note) window.location.href = "404.html";
+if (!note) {
+	window.location.href = "404.html";
+	throw new Error("Note not found"); // stops execution
+}
 
 // query selectors
 const mainContainer = document.querySelector(".main");
@@ -45,40 +49,76 @@ const editNoteColorPineappleperfume = document.querySelector(
 const editNoteColorPeachfizz = document.querySelector(
 	".edit-note__colors.peachfizz",
 );
+const closeWrapper = document.querySelector(".close__wrapper");
+const closeCloseButton = document.querySelector(".close__close");
+const closeConfirmButton = document.querySelector(".close__btn");
+
+// utility function to validate note
+const validateNote = (title, content) => {
+	if (isValidNote(title, content)) {
+		editNoteSubmitButton.disabled = false;
+	} else {
+		editNoteSubmitButton.disabled = true;
+	}
+};
+
+// utility function to check unsaved changes
+const hasUnsavedChanges = () => {
+	return (
+		title !== note.title ||
+		content !== note.content ||
+		img !== note.img ||
+		color !== note.color
+	);
+};
 
 // load initial data
 const loadNote = () => {
-	// load content
-	const titleContainerEl = document.createElement("div");
-	titleContainerEl.classList.add("main__title-container");
+	const titleEl = createElement({
+		tag: "h1",
+		className: "main__title",
+		text: note.title,
+	});
 
-	const titleEl = document.createElement("h1");
-	titleEl.classList.add("main__title");
-	titleEl.textContent = note.title;
-	titleContainerEl.appendChild(titleEl);
+	const dateEl = createElement({
+		tag: "p",
+		className: "main__date",
+		text: note.date,
+	});
 
-	const dateEl = document.createElement("p");
-	dateEl.classList.add("main__date");
-	dateEl.textContent = note.date;
-	titleContainerEl.appendChild(dateEl);
+	const titleContainerEl = createElement({
+		tag: "div",
+		className: "main__title-container",
+		children: [titleEl, dateEl],
+	});
+
 	mainContainer.appendChild(titleContainerEl);
 
 	if (note.img) {
-		const figEl = document.createElement("figure");
-		figEl.classList.add("main__img-container");
+		const imgEl = createElement({
+			tag: "img",
+			className: "main__img",
+			attrs: {
+				src: note.img,
+				alt: "note thumbnail img",
+			},
+		});
 
-		const imgEl = document.createElement("img");
-		imgEl.classList.add("main__img");
-		imgEl.src = note.img;
-		imgEl.alt = "note thumbnail img";
-		figEl.appendChild(imgEl);
+		const figEl = createElement({
+			tag: "figure",
+			className: "main__img-container",
+			children: [imgEl],
+		});
 
 		mainContainer.appendChild(figEl);
 	}
 
-	const contentEl = document.createElement("p");
-	contentEl.classList.add("main__content");
-	contentEl.textContent = note.content;
+	const contentEl = createElement({
+		tag: "p",
+		className: "main__content",
+		text: note.content,
+	});
+
 	mainContainer.appendChild(contentEl);
 };
 loadNote();
@@ -168,9 +208,24 @@ const openEditNoteModel = () => {
 };
 editNoteButton.addEventListener("click", openEditNoteModel);
 
+// =============
+// confirm close
+// =============
+const openCloseModel = () => {
+	closeWrapper.style.display = "flex";
+};
+
+const closeCloseModel = () => {
+	closeWrapper.style.display = "none";
+};
+
 // close model
 const closeEditNoteModel = () => {
-	editNoteWrapper.style.display = "none";
+	if (hasUnsavedChanges()) {
+		openCloseModel();
+	} else {
+		editNoteWrapper.style.display = "none";
+	}
 };
 editNoteButtonClose.addEventListener("click", closeEditNoteModel);
 editNoteWrapper.addEventListener("click", (e) => {
@@ -178,6 +233,25 @@ editNoteWrapper.addEventListener("click", (e) => {
 		closeEditNoteModel();
 	}
 });
+const forceCloseEditNoteModel = () => {
+	closeCloseModel();
+	editNoteWrapper.style.display = "none";
+
+	// reset state back to original note
+	title = note.title;
+	content = note.content;
+	img = note.img;
+	color = note.color;
+};
+closeCloseButton.addEventListener("click", closeCloseModel);
+
+closeWrapper.addEventListener("click", (e) => {
+	if (e.target === closeWrapper) {
+		closeCloseModel();
+	}
+});
+
+closeConfirmButton.addEventListener("click", forceCloseEditNoteModel);
 
 // datas
 let title = note.title;
@@ -186,40 +260,27 @@ let content = note.content;
 let color = note.color;
 
 const curDate = new Date();
-const date = `${months[curDate.getMonth()]} ${curDate.getDate()}, ${curDate.getFullYear()}`;
+const date = `${MONTHS[curDate.getMonth()]} ${curDate.getDate()}, ${curDate.getFullYear()}`;
 
 editNoteTitleInput.addEventListener("input", (e) => {
 	title = e.target.value;
-
-	// on validate, enable or disable submit button
-	if (isValidNote(title, content)) {
-		editNoteSubmitButton.disabled = false;
-	} else {
-		editNoteSubmitButton.disabled = true;
-	}
+	validateNote(title, content);
 });
 editNoteImageInput.addEventListener("input", (e) => {
 	img = e.target.value;
 });
 editNoteContentInput.addEventListener("input", (e) => {
 	content = e.target.value;
-	console.log(isValidNote(title, content));
-
-	// on validate, enable or disable submit button
-	if (isValidNote(title, content)) {
-		editNoteSubmitButton.disabled = false;
-	} else {
-		editNoteSubmitButton.disabled = true;
-	}
+	validateNote(title, content);
 });
 
 // colors change validators
 const colorElements = [
+	editNoteColorBananabread,
 	editNoteColorBubblegumCrisis,
 	editNoteColorEmptiness,
-	editNoteColorBananabread,
-	editNoteColorPineappleperfume,
 	editNoteColorPeachfizz,
+	editNoteColorPineappleperfume,
 ];
 editNoteColorBubblegumCrisis.addEventListener("click", () => {
 	colorElements.forEach((el) => {
@@ -265,6 +326,7 @@ const editNote = () => {
 		content,
 		color,
 		date,
+		fullDate: curDate.getTime(),
 	};
 
 	notes[noteId] = editNote;
@@ -275,4 +337,4 @@ const editNote = () => {
 editNoteSubmitButton.addEventListener("click", editNote);
 
 // color-icon
-colorIcon.style.backgroundColor = colors[note.color]
+colorIcon.style.backgroundColor = COLORS[note.color];
