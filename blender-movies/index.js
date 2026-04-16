@@ -72,6 +72,9 @@ const renderComments = (comments) => {
 		const imgEl = document.createElement("img");
 		imgEl.src = comment.image;
 		imgEl.alt = comment.name;
+		imgEl.onerror = () => {
+			imgEl.src = "./assets/fallbackImage.png";
+		};
 		figureEl.appendChild(imgEl);
 
 		const detailsEl = document.createElement("div");
@@ -106,6 +109,9 @@ const renderPosters = (posters) => {
 		const imgEl = document.createElement("img");
 		imgEl.src = poster.imageUrl;
 		imgEl.alt = poster.title;
+		imgEl.onerror = () => {
+			imgEl.src = "./assets/fallbackImage.png";
+		};
 
 		posterEl.appendChild(imgEl);
 		upcomingList.appendChild(posterEl);
