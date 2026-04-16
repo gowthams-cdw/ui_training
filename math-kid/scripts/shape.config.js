@@ -2,17 +2,8 @@
 export const shapeConfig = {
 	circle: {
 		name: "Circle",
-		color: "#43967d",
-
-		create(el, { size }) {
-			el.style.width = size + "rem";
-			el.style.height = size + "rem";
-			el.style.background = this.color;
-			el.style.borderRadius = "50%";
-		},
-
+		className: "circle",
 		inputPlaceHolder: "Enter Radius",
-
 		data: [
 			{
 				label: "RADIUS",
@@ -34,21 +25,8 @@ export const shapeConfig = {
 
 	triangle: {
 		name: "Equilateral Triangle",
-		color: "#f3afda",
-
-		create(el, { base, height }) {
-			// const half = size / 2;
-			// const height = Math.sqrt(3) * half;
-
-			el.style.width = "0";
-			el.style.height = "0";
-			el.style.borderStyle = "solid";
-			el.style.borderWidth = `0 ${base}rem ${height}rem ${base}rem`;
-			el.style.borderColor = `transparent transparent ${this.color} transparent`;
-		},
-
+		className: "triangle",
 		inputPlaceHolder: "Enter Side",
-
 		data: [
 			{
 				label: "SIDE",
@@ -70,16 +48,8 @@ export const shapeConfig = {
 
 	square: {
 		name: "Square",
-		color: "#e0e0e0",
-
-		create(el, { size }) {
-			el.style.width = size + "rem";
-			el.style.height = size + "rem";
-			el.style.background = this.color;
-		},
-
+		className: "square",
 		inputPlaceHolder: "Enter Side",
-
 		data: [
 			{
 				label: "SIDE",

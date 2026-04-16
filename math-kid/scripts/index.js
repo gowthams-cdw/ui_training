@@ -1,5 +1,21 @@
 import { shapeConfig } from "./shape.config.js";
 
+// session storage
+const STORAGE_KEY = "shapeAppState";
+
+const storage = {
+	save: (state) => sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state)),
+	load: () => JSON.parse(sessionStorage.getItem(STORAGE_KEY)),
+	clear: () => sessionStorage.removeItem(STORAGE_KEY),
+};
+
+// app state
+let appState = {
+	step: 1,
+	selectedShape: null,
+	shapeSize: null,
+};
+
 // utility function to show/hide a container
 const hideContainer = (container) => {
 	container.style.display = "none";
@@ -25,11 +41,6 @@ hideContainer(resultContainerShape);
 hideContainer(resultContainer);
 hideContainer(nextBtn);
 
-// keep track of selected element
-let selectedShape = null;
-let step = 1;
-let shapeSize = null;
-
 // set initial states
 stepName.innerText = "1. Choose a Shape";
 nextBtn.innerText = "NEXT";
@@ -40,18 +51,8 @@ Object.entries(shapeConfig).forEach(([key, shape]) => {
 	wrapper.classList.add("shape-wrapper");
 
 	const el = document.createElement("div");
+	el.classList.add(shape.className);
 	el.classList.add("shape", key);
-
-	if (key === "triangle") {
-		shape.create(el, {
-			base: 3.9,
-			height: 7.6,
-		});
-	} else {
-		shape.create(el, {
-			size: 7.37,
-		});
-	}
 
 	wrapper.addEventListener("click", () => {
 		document
@@ -59,7 +60,8 @@ Object.entries(shapeConfig).forEach(([key, shape]) => {
 			.forEach((w) => w.classList.remove("selected"));
 
 		wrapper.classList.add("selected");
-		selectedShape = key;
+		appState.selectedShape = key;
+		storage.save(appState);
 
 		showContainer(nextBtn);
 	});
@@ -68,24 +70,52 @@ Object.entries(shapeConfig).forEach(([key, shape]) => {
 	shapeContainer.appendChild(wrapper);
 });
 
+// input on change event listener
+inputField.addEventListener("input", (e) => {
+	appState.shapeSize = e.target.value;
+	storage.save(appState);
+});
+
+// handle function to submit on enter
+const handleKeyDown = (e) => {
+	if (e.key === "Enter") {
+		nextBtn.click();
+	}
+};
+
 // next button event listeners
 nextBtn.addEventListener("click", () => {
 	// get the next step number
-	step = (step % 3) + 1;
+	appState.step = (appState.step % 3) + 1;
 
 	// validate the input on step 2
-	if (step === 3) {
+	if (appState.step === 3) {
 		const inputValue = inputField.value.trim();
 
 		if (inputValue === "" || inputValue === null || isNaN(Number(inputValue))) {
 			alert("Please enter a valid number");
-			step = 2;
+			appState.step = 2;
 			return;
 		}
 
-		shapeSize = Number(inputValue);
+		appState.shapeSize = Number(inputValue);
 		inputField.value = "";
 	}
+
+	// reset store
+	if (appState.step === 1) {
+		appState = { step: 1, selectedShape: null, shapeSize: null };
+		storage.clear();
+	}
+
+	storage.save(appState);
+
+	// render the ui
+	render();
+});
+
+const render = () => {
+	const { step, selectedShape, shapeSize } = appState;
 
 	// hide all containers
 	hideContainer(shapeContainer);
@@ -98,11 +128,19 @@ nextBtn.addEventListener("click", () => {
 			mainContainer.classList.remove("result-step");
 
 			// remove selected state from shapes
-			selectedShape = null;
 			document
 				.querySelectorAll(".shape-wrapper")
 				.forEach((w) => w.classList.remove("selected"));
-			hideContainer(nextBtn);
+
+			if (selectedShape) {
+				const el = document.querySelector(`.${selectedShape}`)?.parentElement;
+				if (el) {
+					el.classList.add("selected");
+					showContainer(nextBtn);
+				}
+			} else {
+				hideContainer(nextBtn);
+			}
 
 			showContainer(shapeContainer);
 			stepName.innerText = "1. Choose a Shape";
@@ -111,33 +149,31 @@ nextBtn.addEventListener("click", () => {
 			break;
 		case 2:
 			mainContainer.classList.add("input-step");
+			showContainer(nextBtn);
+
+			// to make things work on enter key press
+			document.removeEventListener("keydown", handleKeyDown);
+			document.addEventListener("keydown", handleKeyDown);
 
 			showContainer(inputContainer);
+			inputField.value = appState.shapeSize || "";
 			stepName.innerText = `2. ${shapeConfig[selectedShape].inputPlaceHolder}`;
 			nextBtn.innerText = "CALCULATE";
 			break;
 		case 3: {
+			document.removeEventListener("keydown", handleKeyDown);
 			mainContainer.classList.remove("input-step");
 			mainContainer.classList.add("result-step");
 
+			showContainer(nextBtn);
 			showContainer(resultContainerShape);
 			showContainer(resultContainer);
 
 			resultContainerShape.innerHTML = "";
 
 			const resultEl = document.createElement("div");
+			resultEl.classList.add(shapeConfig[selectedShape].className);
 			resultEl.classList.add("shape", selectedShape);
-
-			if (selectedShape === "triangle") {
-				shapeConfig[selectedShape].create(resultEl, {
-					base: 4.1,
-					height: 7.9,
-				});
-			} else {
-				shapeConfig[selectedShape].create(resultEl, {
-					size: 8,
-				});
-			}
 
 			resultContainerShape.appendChild(resultEl);
 
@@ -179,4 +215,14 @@ nextBtn.addEventListener("click", () => {
 		default:
 			break;
 	}
-});
+};
+
+// init function
+const init = () => {
+	const saved = storage.load();
+	if (saved) appState = saved;
+
+	render();
+};
+
+init();
