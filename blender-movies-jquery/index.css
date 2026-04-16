@@ -47,8 +47,8 @@
 				}
 
 				.profile__avatar {
-					width: 1.5rem;
-					height: 1.5rem;
+					width: 1.25rem;
+					height: 1.25rem;
 
 					.profile__avatar-img {
 						width: 100%;
@@ -72,7 +72,7 @@
 			padding: 3.95rem 0 1.125rem 0;
 
 			.content {
-				flex: 3.2;
+				width: 74.5%;
 
 				.video__container {
 					position: relative;
@@ -88,18 +88,14 @@
 						display: flex;
 						justify-content: center;
 						align-items: center;
-
 						position: absolute;
 						top: 50%;
 						left: 50%;
 						transform: translate(-50%, -50%);
-
 						width: 3rem;
 						height: 3rem;
-
 						color: #ffffff;
 						font-size: 1.2rem;
-
 						border: 0.225rem solid #ffffff;
 						border-radius: 50%;
 					}
@@ -124,7 +120,7 @@
 
 					.content__details-desc {
 						font-size: 0.6rem;
-						line-height: 1.7;
+						line-height: 1.68;
 						margin-top: 0.3rem;
 						padding-bottom: 1rem;
 						border-bottom: 0.0625rem solid #e2e2e2;
@@ -139,7 +135,7 @@
 					align-items: start;
 
 					.content__comments-title {
-						font-weight: 650;
+						font-weight: 700;
 						font-size: 0.85rem;
 						margin-top: 1rem;
 					}
@@ -149,7 +145,7 @@
 						justify-content: start;
 						align-items: start;
 						gap: 0.69rem;
-						margin-top: 0.8rem;
+						margin-top: 0.88rem;
 
 						&:nth-child(2) {
 							margin-top: 0.1rem;
@@ -193,12 +189,10 @@
 			}
 
 			.upcoming {
-				flex: 1;
-
 				.upcoming__title {
 					margin-top: 0.1rem;
 					font-size: 0.85rem;
-					font-weight: 650;
+					font-weight: 700;
 					word-spacing: 0.1rem;
 				}
 
@@ -269,7 +263,7 @@
 	.body {
 		.header {
 			.headerContainer {
-				width: 90%;
+				width: 100%;
 
 				.profile {
 					.profile__name {
@@ -281,7 +275,7 @@
 
 		.main {
 			.mainContainer {
-				width: 90%;
+				width: 100%;
 				flex-direction: column;
 
 				.content {
@@ -302,7 +296,7 @@
 
 		.footer {
 			.footerContainer {
-				width: 90%;
+				width: 100%;
 				flex-direction: column;
 
 				.footerContainer__title {
