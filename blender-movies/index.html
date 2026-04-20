@@ -1,0 +1,110 @@
+<!-- doctype -->
+<!doctype html>
+
+<!-- html -->
+<html lang="en">
+  <!-- head -->
+  <head>
+    <!-- meta data -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- title -->
+    <title>Blender Movies</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link href="index.css" rel="stylesheet" />
+  </head>
+
+  <!-- body -->
+  <body class="body">
+    <!-- header -->
+    <header class="header">
+      <div class="headerContainer">
+        <a href="/" class="headerContainer__title-link">
+          <h2 class="headerContainer__title">Blender Movies</h2>
+        </a>
+
+        <div class="profile">
+          <p class="profile__name">Steffy Jerry</p>
+
+          <figure class="profile__avatar">
+            <img
+              src="assets/profile.png"
+              alt="profile avator"
+              class="profile__avatar-img"
+            />
+          </figure>
+        </div>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main class="main">
+      <div class="mainContainer">
+        <!-- content section -->
+        <section class="content">
+          <div class="video__container">
+            <video class="video__container-video"></video>
+
+            <i class="fa-solid fa-play video__container-play"></i>
+          </div>
+
+          <div class="content__details">
+            <h2 class="content__details-title"></h2>
+            <p class="content__details-desc"></p>
+          </div>
+
+          <div class="content__comments">
+            <h2 class="content__comments-title">Comments</h2>
+
+            <div class="comment"></div>
+          </div>
+        </section>
+
+        <!-- upcoming section -->
+        <section class="upcoming">
+          <h2 class="upcoming__title">Upcoming Projects</h2>
+
+          <div class="upcoming__list"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- chat icon -->
+    <div class="chat">
+      <i class="fa-regular fa-comments"></i>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="footerContainer">
+        <p class="footerContainer__copyrights">
+          <i class="fa-regular fa-copyright"></i>
+          <span> Copyrights 2022 </span>
+        </p>
+        <p class="footerContainer__title">Blender Movies</p>
+      </div>
+    </footer>
+  </body>
+
+  <!-- scripts -->
+  <script src="index.js" defer></script>
+</html>
