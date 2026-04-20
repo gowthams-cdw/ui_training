@@ -33,6 +33,7 @@
 				.headerContainer__title {
 					color: #000000;
 					font-size: 0.85rem;
+					font-weight: 500;
 				}
 			}
 
@@ -263,6 +264,8 @@
 	.body {
 		.header {
 			.headerContainer {
+				padding-inline: 1.5rem;
+
 				width: 100%;
 
 				.profile {
@@ -274,6 +277,8 @@
 		}
 
 		.main {
+			padding-inline: 1.5rem;
+
 			.mainContainer {
 				width: 100%;
 				flex-direction: column;
