@@ -1,0 +1,229 @@
+/* universal selector */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* body */
+.body {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: "Arial", sans-serif;
+	word-break: break-word;
+	overflow-wrap: break-word;
+
+	/* header */
+	.header {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #b4df91;
+		padding: 1.15rem 1.45rem;
+		font-size: 0.6rem;
+
+		.header__content {
+			font-weight: 600;
+			letter-spacing: 0.05rem;
+		}
+	}
+
+	/* main */
+	.main {
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		align-items: center;
+		flex: 1;
+		width: 100%;
+		background-color: #000000;
+		color: #ffffff;
+		padding-top: 11.95rem;
+
+		.resultContainer__shape {
+			margin-bottom: 1.4rem;
+
+			.circle {
+				height: 7.37rem;
+				width: 7.37rem;
+				background-color: #43967d;
+				border-radius: 50%;
+			}
+
+			.triangle {
+				height: 0;
+				width: 0;
+				border-style: solid;
+				border-width: 0 3.9rem 7.6rem 3.9rem;
+				border-color: transparent transparent #f3afda transparent;
+			}
+
+			.square {
+				height: 7.37rem;
+				width: 7.37rem;
+				background-color: #e0e0e0;
+			}
+		}
+
+		.main__step-name {
+			font-family: "Roboto", sans-serif;
+			font-size: 2.4rem;
+			font-weight: 350;
+		}
+
+		.interaction {
+			/* shape container */
+			.interaction__shape-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 0.8rem;
+				margin-top: 3.3rem;
+
+				.shape-wrapper {
+					position: relative;
+					width: 10rem;
+					height: 10rem;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					&.selected .square::after,
+					&.selected .circle::after {
+						content: "";
+						position: absolute;
+						top: 40%;
+						left: 38.5%;
+						height: 1rem;
+						width: 2.4rem;
+						border-left: 0.15rem solid #ffffff;
+						border-bottom: 0.15rem solid #ffffff;
+						transform: rotate(320deg);
+					}
+
+					&.selected .triangle::after {
+						content: "";
+						position: absolute;
+						top: 50%;
+						left: 38%;
+						height: 1rem;
+						width: 2.4rem;
+						border-left: 0.15rem solid #ffffff;
+						border-bottom: 0.15rem solid #ffffff;
+						transform: rotate(320deg);
+					}
+				}
+
+				.circle {
+					height: 7.37rem;
+					width: 7.37rem;
+					background-color: #43967d;
+					border-radius: 50%;
+				}
+
+				.triangle {
+					height: 0;
+					width: 0;
+					border-style: solid;
+					border-width: 0 3.9rem 7.6rem 3.9rem;
+					border-color: transparent transparent #f3afda transparent;
+				}
+
+				.square {
+					height: 7.37rem;
+					width: 7.37rem;
+					background-color: #e0e0e0;
+				}
+
+				.shape {
+					cursor: pointer;
+				}
+			}
+
+			/* input section */
+			.interaction__input-container {
+				margin-top: 2.625rem;
+
+				.interaction__input {
+					background-color: transparent;
+					color: #ffffff;
+					outline: none;
+					border: 0.0625rem solid #ffffff;
+					padding: 0.8rem 0rem 0.8rem 1.2rem;
+					width: 34rem;
+					font-size: 2rem;
+				}
+			}
+
+			/* results section */
+			.resultContainer {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				margin-top: 0.7rem;
+
+				.result {
+					display: flex;
+					font-size: 0.85rem;
+
+					.result__propertyName {
+						background-color: #2c60cf;
+						padding: 0.55rem;
+						width: 9.8rem;
+					}
+
+					.result__formula {
+						background-color: #4a5c7b;
+						padding: 0.55rem;
+						width: 6.4rem;
+					}
+
+					.result__value {
+						background-color: #4a86f7;
+						padding: 0.55rem;
+						width: 6.2rem;
+					}
+				}
+			}
+		}
+
+		.main__next-step-btn {
+			color: #ffffff;
+			font-size: 1.1rem;
+			font-weight: 700;
+			background-color: transparent;
+			border: 0.0625rem solid #ffffff;
+			padding: 0.6rem 2rem;
+			cursor: pointer;
+			margin-top: 2.96rem;
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+
+		&.input-step {
+			padding-top: 14.4rem;
+
+			.main__next-step-btn {
+				margin-top: 2.4rem;
+			}
+		}
+
+		&.result-step {
+			padding-top: 7.5rem;
+
+			.main__next-step-btn {
+				margin-top: 3.9rem;
+				font-weight: 700;
+				padding-inline: 1.5rem;
+			}
+		}
+	}
+}
